@@ -67,7 +67,7 @@ contract ProductContract {
     function withdrawToSeller() external onlySeller {
         require(shipped == true);
         require(delivered == DeliveryStatus.Delivered);
-        require(depoOf() >= amount);
+        require(deposits() >= amount);
         _escrow.close();
         _escrow.beneficiaryWithdraw();
     }
