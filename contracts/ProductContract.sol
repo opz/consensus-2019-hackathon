@@ -31,8 +31,18 @@ contract ProductContract {
         require(msg.sender == buyer, "User is not the Buyer");
         _;
     }
+
     modifier onlySeller() {
         require(msg.sender == seller, "User is not the Seller");
+        _;
+    }
+
+    modifier onlyBuyerAndSeller() {
+        require(
+            msg.sender == seller || msg.sender == buyer,
+            "User is not the Seller or Buyer"
+        );
+
         _;
     }
 
