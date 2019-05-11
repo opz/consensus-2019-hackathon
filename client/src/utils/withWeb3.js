@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import getWeb3 from './getWeb3';
-import MetaMask from '../MetaMask';
-import { Dimmer, Loader } from 'semantic-ui-react';
 
 /**
  * WrappedComponent should use componentWillReceiveProps to implement web3
@@ -13,8 +11,7 @@ export default function withWeb3(requireAccounts=false) {
       state = {
         web3: null,
         accounts: null,
-        loading: false,
-        displayMetaMask: false
+        loading: false
       };
 
       async componentDidMount() {
@@ -27,10 +24,7 @@ export default function withWeb3(requireAccounts=false) {
           // Use web3 to get the user's accounts.
           const accounts = web3 && await web3.eth.getAccounts();
 
-          const accountsEmpty = !accounts || !accounts.length;
-          const displayMetaMask = requireAccounts && accountsEmpty;
-
-          this.setState({ web3, accounts, displayMetaMask });
+          this.setState({ web3, accounts });
         } catch (error) {
           // Catch any errors for any of the above operations.
           console.error(error);
@@ -40,23 +34,14 @@ export default function withWeb3(requireAccounts=false) {
       };
 
       render() {
-        const { web3, accounts, loading, displayMetaMask } = this.state;
-
-        if (displayMetaMask) {
-          return <MetaMask web3={web3} />;
-        }
+        const { web3, accounts, loading } = this.state;
 
         return (
-          <>
-            <Dimmer active={loading} page>
-              <Loader />
-            </Dimmer>
-            <WrappedComponent
-              {...this.props}
-              web3={web3}
-              accounts={accounts}
-            />
-          </>
+          <WrappedComponent
+            {...this.props}
+            web3={web3}
+            accounts={accounts}
+          />
         );
       }
     }
