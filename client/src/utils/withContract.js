@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import EndlessCrowdsale from '../contracts/EndlessCrowdsale.json';
-import EndlessToken from '../contracts/EndlessToken.json';
 
 export default function withContract(Contract, propName) {
   return WrappedComponent => {
@@ -33,11 +31,3 @@ export default function withContract(Contract, propName) {
     }
   };
 }
-
-export function withCrowdsale() {
-  return withContract(EndlessCrowdsale, 'crowdsale');
-};
-
-export function withToken() {
-  return withContract(EndlessToken, 'token');
-};
