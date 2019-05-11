@@ -95,8 +95,7 @@ contract ProductContract {
     function getDetails()
         external
         view
-        onlyBuyer
-        onlySeller
+        onlyBuyerAndSeller
         returns (
             string memory, 
             address, 
