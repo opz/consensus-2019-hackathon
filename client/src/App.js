@@ -1,10 +1,7 @@
 import React, { Component } from "react";
-import SimpleStorageContract from "./contracts/SimpleStorage.json";
-import withWeb3 from "./utils/withWeb3";
-import { Redirect } from 'react-router-dom'
-
 import "./App.css";
 import { MDBBtn } from "mdbreact";
+import withWeb3 from "./utils/withWeb3";
 
 class App extends Component {
   constructor(props) {
@@ -14,21 +11,8 @@ class App extends Component {
       web3: null,
       accounts: null,
       contract: null,
-      red: false,
     };
-    this.handleWholesaler = this.handleWholesaler.bind(this);
   }
-
-  /* handleWholesaler = async () => {
-    console.log("ASDSADADASD");
-    this.props.history.push('/wholesaler');
-  }; */
-  handleWholesaler(e) {
-    console.log("ASDSADADASD");
-    this.setState({
-      red: true,
-    });
-  };
 
   componentDidMount = async () => {
     try {
@@ -78,28 +62,9 @@ class App extends Component {
     if (!this.props.web3) {
       return <div>Loading Web3, accounts, and contract...</div>;
     }
-    let red = null;
-    if (this.state.errorMessage) {
-      red = (
-        <Redirect to={"/wholesale"} />
-      )
-    }
+
     return (
       <div className="body-wrap">
-        <header className="site-header">
-          <div className="container">
-            <div className="site-header-inner">
-              <div className="brand header-brand">
-                <h1 className="m-0">
-                  <a href="#">
-                    <img className="header-logo-image" src="dist/images/logo.svg" alt="Logo" />
-                  </a>
-                </h1>
-              </div>
-            </div>
-          </div>
-        </header>
-
         <main>
           <section className="hero">
             <div className="container">
@@ -108,7 +73,8 @@ class App extends Component {
                   <h1 className="hero-title mt-0">Landing template for startups</h1>
                   <p className="hero-paragraph">Our landing page template works on all devices, so you only have to set it up once, and get beautiful results forever.</p>
                   <div className="hero-cta">
-                    <a className="button button-primary" href="/seller">Pre order now</a><a className="button" href="#">Get in touch</a>
+                    <a className="button button-primary" href="/seller">Pre order now</a>
+                    <a className="button" href="/buyer">Get in touch</a>
                   </div>
                 </div>
                 <div className="hero-figure anime-element">
@@ -240,68 +206,15 @@ class App extends Component {
               <div className="cta-inner section-inner">
                 <h3 className="section-title mt-0">Still not convinced on buying?</h3>
                 <div className="cta-cta">
-                  <a className="button button-primary button-wide-mobile" href="#">Get in touch</a>
+                  <a className="button button-primary button-wide-mobile" href="/">Get in touch</a>
                 </div>
               </div>
             </div>
           </section>
         </main>
-
-        <footer className="site-footer">
-          <div className="container">
-            <div className="site-footer-inner">
-              <div className="brand footer-brand">
-                <a href="#">
-                  <img className="header-logo-image" src="dist/images/logo.svg" alt="Logo" />
-                </a>
-              </div>
-              <ul className="footer-links list-reset">
-                <li>
-                  <a href="#">Contact</a>
-                </li>
-                <li>
-                  <a href="#">About us</a>
-                </li>
-                <li>
-                  <a href="#">FAQ's</a>
-                </li>
-                <li>
-                  <a href="#">Support</a>
-                </li>
-              </ul>
-              <ul className="footer-social-links list-reset">
-                <li>
-                  <a href="#">
-                    <span className="screen-reader-text">Facebook</span>
-                    <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M6.023 16L6 9H3V6h3V4c0-2.7 1.672-4 4.08-4 1.153 0 2.144.086 2.433.124v2.821h-1.67c-1.31 0-1.563.623-1.563 1.536V6H13l-1 3H9.28v7H6.023z" fill="#0270D7" />
-                    </svg>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span className="screen-reader-text">Twitter</span>
-                    <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M16 3c-.6.3-1.2.4-1.9.5.7-.4 1.2-1 1.4-1.8-.6.4-1.3.6-2.1.8-.6-.6-1.5-1-2.4-1-1.7 0-3.2 1.5-3.2 3.3 0 .3 0 .5.1.7-2.7-.1-5.2-1.4-6.8-3.4-.3.5-.4 1-.4 1.7 0 1.1.6 2.1 1.5 2.7-.5 0-1-.2-1.5-.4C.7 7.7 1.8 9 3.3 9.3c-.3.1-.6.1-.9.1-.2 0-.4 0-.6-.1.4 1.3 1.6 2.3 3.1 2.3-1.1.9-2.5 1.4-4.1 1.4H0c1.5.9 3.2 1.5 5 1.5 6 0 9.3-5 9.3-9.3v-.4C15 4.3 15.6 3.7 16 3z" fill="#0270D7" />
-                    </svg>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span className="screen-reader-text">Google</span>
-                    <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M7.9 7v2.4H12c-.2 1-1.2 3-4 3-2.4 0-4.3-2-4.3-4.4 0-2.4 2-4.4 4.3-4.4 1.4 0 2.3.6 2.8 1.1l1.9-1.8C11.5 1.7 9.9 1 8 1 4.1 1 1 4.1 1 8s3.1 7 7 7c4 0 6.7-2.8 6.7-6.8 0-.5 0-.8-.1-1.2H7.9z" fill="#0270D7" />
-                    </svg>
-                  </a>
-                </li>
-              </ul>
-              <div className="footer-copyright">&copy; 2019 Solid, all rights reserved</div>
-            </div>
-          </div>
-        </footer>
       </div>
     );
   }
 }
 
-export default withWeb3()(App);
+export default withWeb3(App);
