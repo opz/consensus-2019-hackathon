@@ -64,11 +64,6 @@ contract ProductContract {
         shipped = _shipped;
     }
 
-    function setBuyer(address payable _buyer) public payable onlySeller {
-        buyer = _buyer;
-        // set buyerToContract mapping in factory
-    }
-
     function withdrawToSeller() public onlySeller {
         require(shipped == true);
         require(delivered == DeliveryStatus.Delivered);
