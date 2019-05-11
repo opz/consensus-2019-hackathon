@@ -1,15 +1,33 @@
 import React, { Component } from "react";
 import SimpleStorageContract from "./contracts/SimpleStorage.json";
 import getWeb3 from "./utils/getWeb3";
+import withWeb3 from "./utils/withWeb3";
+import {
+  MDBBtn,
+} from "mdbreact";
+
 
 import "./App.css";
 
 class App extends Component {
-  state = { storageValue: 0, web3: null, accounts: null, contract: null };
+  state = { 
+    storageValue: 0,
+    web3: null,
+    accounts: null,
+    contract: null
+  };
+
+  handleWholesaler = async () => {
+
+  };
+
+  handleWholesaler = async () => {
+
+  };
 
   componentDidMount = async () => {
     try {
-      // Get network provider and web3 instance.
+      /* // Get network provider and web3 instance.
       const web3 = await getWeb3();
 
       // Use web3 to get the user's accounts.
@@ -25,7 +43,10 @@ class App extends Component {
 
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
-      this.setState({ web3, accounts, contract: instance }, this.runExample);
+      this.setState(
+        { web3, accounts, contract: instance },
+        //this.runExample
+      ); */
     } catch (error) {
       // Catch any errors for any of the above operations.
       alert(
@@ -49,7 +70,7 @@ class App extends Component {
   };
 
   render() {
-    if (!this.state.web3) {
+    if (!this.props.web3) {
       return <div>Loading Web3, accounts, and contract...</div>;
     }
     return (
@@ -64,10 +85,22 @@ class App extends Component {
         <p>
           Try changing the value stored on <strong>line 40</strong> of App.js.
         </p>
-        <div>The stored value is: {this.state.storageValue}</div>
+        <div className="text-center py-4 mt-3">
+          <MDBBtn className="btn btn-outline-purple"
+            onClick={this.handleWholesaler}>
+            Wholesaler
+          <i className="fa fa-paper-plane-o ml-2" />
+          </MDBBtn>
+          <MDBBtn className="btn btn-outline-purple"
+            type="submit">
+            Retailer
+          <i className="fa fa-paper-plane-o ml-2" />
+          </MDBBtn>
+        </div>
+
       </div>
     );
   }
 }
 
-export default App;
+export default withWeb3()(App);
