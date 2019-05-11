@@ -7,7 +7,7 @@ import {
   MDBContainer,
 } from "mdbreact";
 
-class Seller extends Component {
+class Buyer extends Component {
   state = {
   };
 
@@ -18,7 +18,7 @@ class Seller extends Component {
           <MDBCardHeader className="py-2 px-2" color="primary-color" tag="h4"> Account Management</MDBCardHeader>
           <div className="card-body">
             <MDBBtn className="px-2" block color="danger">
-              Be happy!
+              Buyer Be happy!
             </MDBBtn>
           </div>
         </MDBCard>
@@ -29,4 +29,4 @@ class Seller extends Component {
 
 
 
-export default withWeb3(Seller);
+export default withWeb3(Buyer);
