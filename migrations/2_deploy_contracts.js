@@ -1,5 +1,5 @@
-var ProductContract = artifacts.require("ProductContract");
+var ContractFactory = artifacts.require("ContractFactory");
 
 module.exports = function(deployer) {
-  deployer.deploy(ProductContract, 'Test name');
+  deployer.deploy(ContractFactory);
 };

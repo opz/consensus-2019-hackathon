@@ -14,9 +14,9 @@ contract ProductContract {
     bool public shipped;
     DeliveryStatus delivered;
 
-    constructor(string memory _name) public {
+    constructor(address payable _seller, string memory _name) public {
         name = _name;
-        seller = msg.sender;
+        seller = _seller;
         _escrow = new RefundEscrow(seller);
     }
 
