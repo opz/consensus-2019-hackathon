@@ -69,7 +69,7 @@ class App extends Component {
                   <h1 className="hero-title mt-0">Enabling trust between buyers and sellers.</h1>
                   <p className="hero-paragraph">Our landing page template works on all devices, so you only have to set it up once, and get beautiful results forever.</p>
                   <div className="hero-cta">
-                    <a className="button button-primary" href="/seller"> Sellers </a>
+                    <a className="button seller-button" href="/seller"> Sellers </a>
                     <a className="button buyer-button" href="/buyer"> Buyers </a>
                   </div>
                 </div>

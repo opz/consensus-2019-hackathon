@@ -79,7 +79,18 @@ tr {
 }
 
 .buyer-button {
-    background-color: #069dcd;
+    background-color:#069dcd;
+}
+
+.buyer-button:hover{
+    background-color: #05516a;
+}
+
+.seller-button {
+    background-color: #0270d7 !important;
+}
+.seller-button:hover{
+    background-color: #063e73 !important;
 }
 
 .grey-background {
