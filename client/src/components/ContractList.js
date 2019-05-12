@@ -7,6 +7,7 @@ import {
   TableHead,
   MDBBtn,
   MDBInput,
+  MDBContainer,
 } from "mdbreact";
 import { getDeliveredText } from '../utils/shared';
 
@@ -58,22 +59,23 @@ class ContractList extends Component {
           heading0: this.props.contracts[key]["name"],
           //heading1: this.props.contracts[key]["amount"],
           heading1:
-          <MDBInput onKeyDown={(e) => this.props.handleAmountChange(e, this.props.contracts[key]["object"])}></MDBInput>,
+            <MDBInput onKeyDown={(e) => this.props.handleAmountChange(e, this.props.contracts[key]["object"])}></MDBInput>,
           heading2: this.props.contracts[key]["deposited"],
           heading3: getDeliveredText(parseInt(this.props.contracts[key]["delivered"])),
           heading4:
-          <select className="browser-default custom-select" defaultValue={String(this.props.contracts[key]["shipped"])} onChange={(e) => this.props.handleShippedChange(e, this.props.contracts[key]["object"])}>
-            <option value="false" >False</option>
-            <option value="true" >True</option>
-          </select>,
+            <select className="browser-default custom-select" defaultValue={String(this.props.contracts[key]["shipped"])} onChange={(e) => this.props.handleShippedChange(e, this.props.contracts[key]["object"])}>
+              <option value="false" >False</option>
+              <option value="true" >True</option>
+            </select>,
           heading5:
-          <MDBBtn color="primary" size="sm" onClick={(e) => this.props.handleWithdrawFunds(e, this.props.contracts[key]["object"])}>Withdraw Funds</MDBBtn>,
+            <MDBBtn color="primary" size="sm" onClick={(e) => this.props.handleWithdrawFunds(e, this.props.contracts[key]["object"])}>Withdraw Funds</MDBBtn>,
         })
     };
     return (
+
       <Card>
         <CardBody>
-          <h2 className="h2-responsive pb-4">Your Accounts</h2>
+          {/* <h2 className="h2-responsive pb-4">Your Accounts</h2> */}
           <Table responsive small>
             <TableHead
               columns={columns}
@@ -85,6 +87,7 @@ class ContractList extends Component {
           </Table>
         </CardBody>
       </Card>
+
     );
   }
 };
