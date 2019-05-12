@@ -2,12 +2,6 @@ import React, { Component } from "react";
 import "./App.css";
 import { MDBBtn } from "mdbreact";
 import withWeb3 from "./utils/withWeb3";
-import feature1 from "./dist/images/feature-icon-01.svg";
-import feature2 from "./dist/images/feature-icon-02.svg";
-import feature3 from "./dist/images/feature-icon-03.svg";
-import feature4 from "./dist/images/feature-icon-04.svg";
-import feature5 from "./dist/images/feature-icon-05.svg";
-import feature6 from "./dist/images/feature-icon-06.svg";
 
 class App extends Component {
   constructor(props) {
@@ -65,10 +59,6 @@ class App extends Component {
   };
 
   render() {
-    // if (!this.props.web3) {
-    //   return <div>Loading Web3, accounts, and contract...</div>;
-    // }
-
     return (
       <div className="body-wrap">
         <main>
