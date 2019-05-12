@@ -78,6 +78,16 @@ tr {
     background-color: rgba(0, 0, 0, 0.075);
 }
 
+.wei {
+    width: 0.7rem;
+    display: inline-block;
+}
+
+.md-form {
+    width: 50px;
+    display: inline-block;
+}
+
 .expanded-details {
   text-align: center;
   background-color: rgba(0, 0, 0, 0.075);
@@ -90,6 +100,7 @@ tr {
 
 .card-header {
   background-color: #0270d7 !important;
+  border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0 !important;
 }
 
 .form-check-input {

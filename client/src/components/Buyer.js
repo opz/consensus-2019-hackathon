@@ -9,6 +9,7 @@ import {
 import failed from '../dist/images/failed.png'
 import pending from '../dist/images/pending.png'
 import success from '../dist/images/success.png'
+import wei from '../dist/images/ethereum-logo.png'
 
 class Buyer extends Component {
   state = {
@@ -81,9 +82,18 @@ class Buyer extends Component {
                 <tbody>
                   <tr onClick={(e) => this.expandRow(e)} className="collapsed">
                     
-                    <td>Mark</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
+                    <td>
+                    Mark Roth
+                    </td>
+                    <td>
+                    <div class="md-form">
+                      <input value="5.22" type="text" id="inputPrefilledEx2" class="form-control"/>
+                      <label for="inputPrefilledEx2"></label>
+                    </div>
+                    <img class="wei" src={wei}></img></td>
+                    <td>
+                    0x182hf038rf72hf982jd
+                    </td>
                     <td>
                       <img className="status-step-icon" src={pending}></img>
                     </td>
@@ -108,9 +118,15 @@ class Buyer extends Component {
                </tr>
                   
                   <tr onClick={(e) => this.expandRow(e)} className="collapsed">
-                      <td>Jacob</td>
-                      <td>@fat</td>
-                      <td>Jacob</td>
+                      <td>Jacob Grout</td>
+                      <td>
+                      <div class="md-form">
+                      <input value="9.87" type="text" id="inputPrefilledEx2" class="form-control"/>
+                      <label for="inputPrefilledEx2"></label>
+                    </div>
+                    <img class="wei" src={wei}></img>
+                      </td>
+                      <td>0x9238hr74gthf9283</td>
                       <td><img className="status-step-icon" src={success}></img></td>
                   </tr>
               <tr className="expanded-details hidden-details">
@@ -132,9 +148,15 @@ class Buyer extends Component {
                </tr>
                   <tr onClick={(e) => this.expandRow(e)} className="collapsed">
                     
-                    <td>Larry</td>
-                    <td>@twitter</td>
-                    <td>Larry</td>
+                    <td>Larry Yellis</td>
+                    <td>
+                    <div class="md-form">
+                      <input value="1.23" type="text" id="inputPrefilledEx2" class="form-control"/>
+                      <label for="inputPrefilledEx2"></label>
+                    </div>
+                    <img class="wei" src={wei}></img>
+                    </td>
+                    <td>0x9283hf3874gg32</td>
                     <td><img className="status-step-icon" src={failed}></img></td>
                   </tr>
                   <tr className="expanded-details hidden-details">
@@ -155,9 +177,16 @@ class Buyer extends Component {
                </td>
                </tr>
                   <tr onClick={(e) => this.expandRow(e)} className="collapsed">
-                    <td>Paul</td>
-                    <td>@P_Topolski</td>
-                    <td>Paul</td>
+                    <td>Paul Schomer</td>
+                    <td>
+                      
+                    <div class="md-form">
+                      <input value="6.14" type="text" id="inputPrefilledEx2" class="form-control"/>
+                      <label for="inputPrefilledEx2"></label>
+                    </div>
+                    <img class="wei" src={wei}></img>
+                    </td>
+                    <td>0x9238fh8374g4</td>
                     <td><img className="status-step-icon" src={pending}></img></td>
                   </tr>
                   <tr className="expanded-details hidden-details">
@@ -178,9 +207,14 @@ class Buyer extends Component {
                </td>
                </tr>
                   <tr onClick={(e) => this.expandRow(e)} className="collapsed">
-                    <td>Larry</td>
-                    <td>@twitter</td>
-                    <td>Larry</td>
+                    <td>Larry Tilde</td>
+                    <td>
+                    <div class="md-form">
+                      <input value="2.02" type="text" id="inputPrefilledEx2" class="form-control"/>
+                      <label for="inputPrefilledEx2"></label>
+                    </div>
+                    <img class="wei" src={wei}></img></td>
+                    <td>0x23r76t34t8749</td>
                     <td><img className="status-step-icon" src={success}></img></td>
                   </tr>
                   <tr className="expanded-details hidden-details">
