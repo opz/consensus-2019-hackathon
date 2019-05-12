@@ -3,14 +3,12 @@ import {
   MDBContainer,
   MDBCardHeader,
 } from "mdbreact";
-import { getDeliveredText } from '../utils/shared';
 import failed from '../dist/images/failed.png'
 import pending from '../dist/images/pending.png'
 import success from '../dist/images/success.png'
 
 class PrettyContractList extends Component {
   expandRow(el) {
-    console.log(el.currentTarget, el.currentTarget.classList);
     if (el.currentTarget.classList.contains('collapsed')) {
       //reveal
       el.currentTarget.nextSibling.classList.remove('hidden-details');
@@ -27,8 +25,6 @@ class PrettyContractList extends Component {
 
   render() {
     let contractRows = [];
-    let index = 0;
-    console.log(this.props.contracts);
     for (let key in this.props.contracts) {
       contractRows.push(
         <tbody>
@@ -44,17 +40,17 @@ class PrettyContractList extends Component {
           <tr className="expanded-details hidden-details">
             <th></th>
             <td colSpan="4">
-              <button type="button" className="btn  blue-background-button" onClick={(e) => this.props.handleWithdraw(this.props.contracts[key]["object"])}>Withdraw</button>
+              <button type="button" className="btn  blue-background-button" disabled={this.props.contracts[key]["delivered"] === 2} onClick={(e) => this.props.handleWithdraw(this.props.contracts[key]["object"])}>Withdraw</button>
               <button type="button" className="btn  blue-background-button" onClick={(e) => this.props.handleSendMoney(this.props.contracts[key]["amount"], this.props.contracts[key]["object"])}>Send</button>
               <div className="custom-control custom-switch">
-                <input type="checkbox" className="custom-control-input" disabled={true} id="customSwitches" />
-                <label className="custom-control-label" for="customSwitches">Shipped</label>
+                <input type="checkbox" checked={this.props.contracts[key]["shipped"]} className="custom-control-input" disabled={true} id="customSwitches" />
+                <label className="custom-control-label" htmlFor="customSwitches">Shipped</label>
               </div>
-              <select class="browser-default custom-select" onChange={(e) => this.props.handleDeliveryChange(e, this.props.contracts[key]["object"])}>
-                <option selected>Delivery</option>
+              <select className="browser-default custom-select" onChange={(e) => this.props.handleDeliveryChange(e, this.props.contracts[key]["object"])}>
+                <option defaultValue>Delivery</option>
                 <option value="1">Success</option>
-                <option value="2">In Progress...</option>
-                <option value="3">Failure</option>
+                <option value="0">In Progress...</option>
+                <option value="2">Failure</option>
               </select>
             </td>
           </tr>

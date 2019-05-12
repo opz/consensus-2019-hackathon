@@ -59,6 +59,7 @@ class Buyer extends Component {
   };
 
   handleDeliveryChange(e, contract) {
+    console.log(e.target.value);
     contract.methods.setDelivered(e.target.value).send({
       "from": this.props.accounts[0],
     });
@@ -67,7 +68,6 @@ class Buyer extends Component {
   render() {
     let contractRows = [];
     for (let key in this.state.contracts) {
-      console.log(this.state.contracts[0]["amount"]);
       contractRows.push(
         <tr>
           <th scope="row">
