@@ -78,7 +78,7 @@ contract ProductContract {
         _escrow.withdraw(buyer);
     }
 
-    function depoOf() public view returns (uint256) {
+    function deposits() public view returns (uint256) {
         return _escrow.depositsOf(buyer);
     }
 
@@ -87,8 +87,16 @@ contract ProductContract {
         view
         onlyBuyer
         onlySeller
-        returns (string memory, address, address, uint256, bool, DeliveryStatus)
+        returns (
+            string memory, 
+            address, 
+            address, 
+            uint256, 
+            uint256, 
+            bool, 
+            DeliveryStatus
+        )
     {
-        return (name, seller, buyer, amount, shipped, delivered);
+        return (name, seller, buyer, amount, deposits(), shipped, delivered);
     }
 }
