@@ -74,6 +74,10 @@ tr {
     display: inline-block;
 }
 
+#send-trust > a {
+    color: white;
+}
+
 .grey-background {
     background-color: rgba(0, 0, 0, 0.075);
 }
