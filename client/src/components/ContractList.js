@@ -7,6 +7,7 @@ import {
   TableHead,
   MDBBtn,
   MDBInput,
+  MDBCardHeader
 } from "mdbreact";
 import { getDeliveredText } from '../utils/shared';
 
@@ -72,26 +73,27 @@ class ContractList extends Component {
               <option value="true" >True</option>
             </select>,
           heading5:
-            <MDBBtn color="primary" size="sm" onClick={(e) => this.props.handleWithdrawFunds(e, this.props.contracts[key]["object"])}>Withdraw Funds</MDBBtn>,
+            <MDBBtn className="blue-background-button" size="sm" onClick={(e) => this.props.handleWithdrawFunds(e, this.props.contracts[key]["object"])}>Withdraw Funds</MDBBtn>,
         })
     };
     return (
+      <div>
+      <MDBCardHeader className="mx-auto card-header float-none z-depth-1 w-100 p-3 py-2 px-2" tag="h4">Contract List</MDBCardHeader>
 
       <Card>
-        <CardBody>
+        <CardBody className="p-0">
           {/* <h2 className="h2-responsive pb-4">Your Accounts</h2> */}
           <Table responsive small>
             <TableHead
               columns={columns}
-              color="primary-color"
-              textWhite
+              textBlack
             />
             <TableBody rows={contractRows}
             />
           </Table>
         </CardBody>
       </Card>
-
+      </div>
     );
   }
 };

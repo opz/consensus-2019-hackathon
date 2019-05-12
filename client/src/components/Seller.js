@@ -134,9 +134,8 @@ class Seller extends Component {
             </MDBCol>
           </MDBRow>
 
-        <hr className="my-2" />
           <Row >
-            <Col md="12">
+            <Col className="mx-auto float-none" md="9">
               <ContractList 
                 contracts={this.state.contracts} 
                 handleShippedChange={this.handleShippedChange}
