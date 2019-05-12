@@ -27,11 +27,20 @@
   }
 }
 
+.custom-switch {
+    display: inline-block !important;
+    margin: 0 1rem;
+}
 .site-header::before {
     z-index: -1;
 }
 
 #create-new-contract {
+    background-color: #0270d7 !important;
+}
+
+.blue-background-button {
+    color: white !important;
     background-color: #0270d7 !important;
 }
 

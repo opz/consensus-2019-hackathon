@@ -32,17 +32,17 @@ class Buyer extends Component {
       <MDBContainer fluid>
         <MDBCardHeader className="mx-auto card-header float-none z-depth-1 w-75 p-3 py-2 px-2" tag="h4">Buyer</MDBCardHeader>
         <MDBCard className="mb-5 mx-auto float-none white z-depth-1 w-75 p-3">
-          <div className="card-body">
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">@</span>
+          <div classNameName="card-body">
+            <div className="input-group mb-3">
+              <div className="input-group-prepend">
+                <span className="input-group-text" id="basic-addon1">@</span>
               </div>
-              <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"/>
+              <input type="text" className="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"/>
             </div>
-              <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="Address"/>
-              <input type="email" id="defaultLoginFormEmail" class="w-50 form-control mb-4" placeholder="City"/>
-              <div class="input-group mb-3 w-50">
-              <select class="browser-default custom-select">
+              <input type="email" id="defaultLoginFormEmail" className="form-control mb-4" placeholder="Address"/>
+              <input type="email" id="defaultLoginFormEmail" className="w-50 form-control mb-4" placeholder="City"/>
+              <div className="input-group mb-3 w-50">
+              <select className="browser-default custom-select">
                 <option selected>State</option>
                 <option value="1">Virginia</option>
                 <option value="2">New York</option>
@@ -56,137 +56,212 @@ class Buyer extends Component {
                 <option value="3">Oklahoma</option>
               </select>
               </div>
-              <div class="input-group mb-3">  
-              <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="Zip"/>
+              <div className="input-group mb-3">  
+              <input type="email" id="defaultLoginFormEmail" className="form-control mb-4" placeholder="Zip"/>
               </div>
-            <MDBBtn className="px-2" block id="create-new-contract">
+            <MDBBtn classNameName="px-2" block id="create-new-contract">
               Create New Contract
             </MDBBtn>
           </div>
         </MDBCard>
-        <div class="card card-cascade narrower w-75 mx-auto float-none">
+        <div className="card card-cascade narrower w-75 mx-auto float-none">
 
           <div
-            class="view view-cascade card-header narrower d-flex justify-content-between align-items-center">
+            className="view view-cascade card-header narrower d-flex justify-content-between align-items-center">
 
             <div>
-              <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2">
-                <i class="fas fa-th-large mt-0"></i>
+              <button type="button" className="btn btn-outline-white btn-rounded btn-sm px-2">
+                <i className="fas fa-th-large mt-0"></i>
               </button>
-              <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2">
-                <i class="fas fa-columns mt-0"></i>
+              <button type="button" className="btn btn-outline-white btn-rounded btn-sm px-2">
+                <i className="fas fa-columns mt-0"></i>
               </button>
             </div>
 
-            <a href="" class="white-text mx-3">Contracts</a>
+            <a href="" className="white-text mx-3">Contracts</a>
 
             <div>
-              <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2">
-                <i class="fas fa-pencil-alt mt-0"></i>
+              <button type="button" className="btn btn-outline-white btn-rounded btn-sm px-2">
+                <i className="fas fa-pencil-alt mt-0"></i>
               </button>
-              <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2">
-                <i class="far fa-trash-alt mt-0"></i>
+              <button type="button" className="btn btn-outline-white btn-rounded btn-sm px-2">
+                <i className="far fa-trash-alt mt-0"></i>
               </button>
-              <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2">
-                <i class="fas fa-info-circle mt-0"></i>
+              <button type="button" className="btn btn-outline-white btn-rounded btn-sm px-2">
+                <i className="fas fa-info-circle mt-0"></i>
               </button>
             </div>
 
           </div>
 
-          <div class="px-4">
+          <div className="px-4">
 
-            <div class="table-wrapper table-responsive">
-              <table class="table table-sm table-hover mb-0">
+            <div className="table-wrapper table-responsive">
+              <table className="table table-sm table-hover mb-0">
                 <thead>
                   <tr>
-                    <th class="th-lg">
+                    <th className="th-lg">
                       <a>Name
-                        <i class="fas fa-sort ml-1"></i>
+                        <i className="fas fa-sort ml-1"></i>
                       </a>
                     </th>
-                    <th class="th-lg">
+                    <th className="th-lg">
                       <a href="">Amount
-                        <i class="fas fa-sort ml-1"></i>
+                        <i className="fas fa-sort ml-1"></i>
                       </a>
                     </th>
-                    <th class="th-lg">
+                    <th className="th-lg">
                       <a href="">Address
-                        <i class="fas fa-sort ml-1"></i>
+                        <i className="fas fa-sort ml-1"></i>
                       </a>
                     </th>
-                    <th class="th-md">
+                    <th className="th-md">
                       <a href="">Status
-                        <i class="fas fa-sort ml-1"></i>
+                        <i className="fas fa-sort ml-1"></i>
                       </a>
                     </th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr onClick={(e) => this.expandRow(e)} class="collapsed">
+                  <tr onClick={(e) => this.expandRow(e)} className="collapsed">
                     
                     <td>Mark</td>
                     <td>@mdo</td>
                     <td>Mark</td>
                     <td>
-                      <img class="status-step-icon" src={pending}></img>
+                      <img className="status-step-icon" src={pending}></img>
                     </td>
                   </tr>
                   
-                  <tr class="expanded-details hidden-details">
+                  <tr className="expanded-details hidden-details">
               <th></th>
-              <td colspan="4">aw;oeifjawefoeifjawef
-               oeifjawef oeifjawef oeifjawef oeifjawefoeifjawef oeifjawef oeifjawef oeifjawef oeifjawef
+              <td colspan="4">
+                <button type="button" className="btn  blue-background-button">Withdraw Funds</button>
+                <button type="button" className="btn  blue-background-button">Send Funds</button>
+                <div class="custom-control custom-switch">
+                  <input type="checkbox" class="custom-control-input" id="customSwitches"/>
+                  <label class="custom-control-label" for="customSwitches">Shipment</label>
+                </div>
+                <button className="btn  dropdown-toggle mr-4 blue-background-button" type="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">Delivery</button>
+
+                <div className="dropdown-menu">
+                  <a className="dropdown-item" href="#">Success</a>
+                  <a className="dropdown-item" href="#">In Progress...</a>
+                  <a className="dropdown-item" href="#">Failed</a>
+                  <div className="dropdown-divider"></div>
+                  <a className="dropdown-item" href="#">Separated link</a>
+                </div>
                </td>
                </tr>
                   
-                  <tr onClick={(e) => this.expandRow(e)} class="collapsed">
+                  <tr onClick={(e) => this.expandRow(e)} className="collapsed">
                       <td>Jacob</td>
                       <td>@fat</td>
                       <td>Jacob</td>
-                      <td><img class="status-step-icon" src={success}></img></td>
+                      <td><img className="status-step-icon" src={success}></img></td>
                   </tr>
-              <tr class="expanded-details hidden-details">
+              <tr className="expanded-details hidden-details">
               <th></th>
-              <td colspan="4">aw;oeifjawefoeifjawef
-               oeifjawef oeifjawef oeifjawef oeifjawefoeifjawef oeifjawef oeifjawef oeifjawef oeifjawef
+              <td colspan="4">
+              <button type="button" className="btn  blue-background-button">Withdraw Funds</button>
+                <button type="button" className="btn  blue-background-button">Send Funds</button>
+                <div class="custom-control custom-switch">
+                  <input type="checkbox" class="custom-control-input" id="customSwitches"/>
+                  <label class="custom-control-label" for="customSwitches">Shipment</label>
+                </div>
+                <button className="btn  dropdown-toggle mr-4 blue-background-button" type="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">Delivery</button>
+
+                <div className="dropdown-menu">
+                  <a className="dropdown-item" href="#">Success</a>
+                  <a className="dropdown-item" href="#">In Progress...</a>
+                  <a className="dropdown-item" href="#">Failed</a>
+                  <div className="dropdown-divider"></div>
+                  <a className="dropdown-item" href="#">Separated link</a>
+                </div>
                </td>
                </tr>
-                  <tr onClick={(e) => this.expandRow(e)} class="collapsed">
+                  <tr onClick={(e) => this.expandRow(e)} className="collapsed">
                     
                     <td>Larry</td>
                     <td>@twitter</td>
                     <td>Larry</td>
-                    <td><img class="status-step-icon" src={failed}></img></td>
+                    <td><img className="status-step-icon" src={failed}></img></td>
                   </tr>
-                  <tr class="expanded-details hidden-details">
+                  <tr className="expanded-details hidden-details">
               <th></th>
-              <td colspan="4">aw;oeifjawefoeifjawef
-               oeifjawef oeifjawef oeifjawef oeifjawefoeifjawef oeifjawef oeifjawef oeifjawef oeifjawef
+              <td colspan="4">
+              <button type="button" className="btn  blue-background-button">Withdraw Funds</button>
+                <button type="button" className="btn  blue-background-button">Send Funds</button>
+                <div class="custom-control custom-switch">
+                  <input type="checkbox" class="custom-control-input" id="customSwitches"/>
+                  <label class="custom-control-label" for="customSwitches">Shipment</label>
+                </div>
+                <button className="btn  dropdown-toggle mr-4 blue-background-button" type="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">Delivery</button>
+
+                <div className="dropdown-menu">
+                  <a className="dropdown-item" href="#">Success</a>
+                  <a className="dropdown-item" href="#">In Progress...</a>
+                  <a className="dropdown-item" href="#">Failed</a>
+                  <div className="dropdown-divider"></div>
+                  <a className="dropdown-item" href="#">Separated link</a>
+                </div>
                </td>
                </tr>
-                  <tr onClick={(e) => this.expandRow(e)} class="collapsed">
+                  <tr onClick={(e) => this.expandRow(e)} className="collapsed">
                     <td>Paul</td>
                     <td>@P_Topolski</td>
                     <td>Paul</td>
-                    <td><img class="status-step-icon" src={pending}></img></td>
+                    <td><img className="status-step-icon" src={pending}></img></td>
                   </tr>
-                  <tr class="expanded-details hidden-details">
+                  <tr className="expanded-details hidden-details">
               <th></th>
-              <td colspan="4">aw;oeifjawefoeifjawef
-               oeifjawef oeifjawef oeifjawef oeifjawefoeifjawef oeifjawef oeifjawef oeifjawef oeifjawef
+              <td colspan="4">
+              <button type="button" className="btn  blue-background-button">Withdraw Funds</button>
+                <button type="button" className="btn  blue-background-button">Send Funds</button>
+                <div class="custom-control custom-switch">
+                  <input type="checkbox" class="custom-control-input" id="customSwitches"/>
+                  <label class="custom-control-label" for="customSwitches">Shipment</label>
+                </div>
+                <button className="btn  dropdown-toggle mr-4 blue-background-button" type="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">Delivery</button>
+
+                <div className="dropdown-menu">
+                  <a className="dropdown-item" href="#">Success</a>
+                  <a className="dropdown-item" href="#">In Progress...</a>
+                  <a className="dropdown-item" href="#">Failed</a>
+                  <div className="dropdown-divider"></div>
+                  <a className="dropdown-item" href="#">Separated link</a>
+                </div>
                </td>
                </tr>
-                  <tr onClick={(e) => this.expandRow(e)} class="collapsed">
+                  <tr onClick={(e) => this.expandRow(e)} className="collapsed">
                     <td>Larry</td>
                     <td>@twitter</td>
                     <td>Larry</td>
-                    <td><img class="status-step-icon" src={success}></img></td>
+                    <td><img className="status-step-icon" src={success}></img></td>
                   </tr>
-                  <tr class="expanded-details hidden-details">
+                  <tr className="expanded-details hidden-details">
               <th></th>
-              <td colspan="4">aw;oeifjawefoeifjawef
-               oeifjawef oeifjawef oeifjawef oeifjawefoeifjawef oeifjawef oeifjawef oeifjawef oeifjawef
+              <td colspan="4">
+              <button type="button" className="btn blue-background-button">Withdraw Funds</button>
+                <button type="button" className="btn blue-background-button">Send Funds</button>
+                <div class="custom-control custom-switch">
+                  <input type="checkbox" class="custom-control-input" id="customSwitches"/>
+                  <label class="custom-control-label" for="customSwitches">Shipment</label>
+                </div>
+                <button className="btn dropdown-toggle mr-4 blue-background-button" type="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">Delivery</button>
+
+                <div className="dropdown-menu">
+                  <a className="dropdown-item" href="#">Success</a>
+                  <a className="dropdown-item" href="#">In Progress...</a>
+                  <a className="dropdown-item" href="#">Failed</a>
+                  <div className="dropdown-divider"></div>
+                  <a className="dropdown-item" href="#">Separated link</a>
+                </div>
                </td>
                </tr>
                 </tbody>
