@@ -7,22 +7,14 @@ import { wrapContracts } from '../utils/shared';
 import ContractList from "./ContractList";
 import web3 from 'web3';
 import {
-  Card,
-  CardBody,
   Col,
   MDBBtn,
   MDBCard,
   MDBCardHeader,
-  MDBEdgeHeader,
-  MDBFreeBird,
   MDBContainer,
   MDBCol,
-  MDBInput,
   MDBRow,
   Row,
-  Table,
-  TableBody,
-  TableHead,
 } from "mdbreact";
 
 
@@ -79,7 +71,6 @@ class Seller extends Component {
 
   handleAmountChange(e, contract) {
     if (e.key === 'Enter') {
-      //etherAmount = web3.utils.fromWei(strinVal, "ether");
       const weiNumber = web3.utils.toWei(e.target.value, "ether");
       contract.methods.setAmount(weiNumber).send({
         "from": this.props.accounts[0],
@@ -104,7 +95,10 @@ class Seller extends Component {
               return contract.methods.getDetails().call();
             })
         );
-        let w = wrapContracts(results, web3ContractObjects);
+
+
+        let w = wrapContracts(results, web3ContractObjects, this.props.web3);
+        console.log(w);
         this.setState({ contracts: w });
       } catch (e) {
         console.log(e);
