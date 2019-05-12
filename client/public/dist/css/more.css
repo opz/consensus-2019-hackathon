@@ -43,6 +43,12 @@
     z-index: -1;
 }
 
+.site-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
 #create-new-contract {
     background-color: #0270d7 !important;
 }
