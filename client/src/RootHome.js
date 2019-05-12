@@ -29,9 +29,9 @@ class RootHome extends React.Component {
           <div className="container">
             <div className="site-footer-inner">
               <div className="brand footer-brand">
-                <a href="/">
+                {/* <a href="/">
                   <img className="header-logo-image" src="dist/images/logo.svg" alt="Logo" />
-                </a>
+                </a> */}
               </div>
               <ul className="footer-links list-reset">
                 <li>
