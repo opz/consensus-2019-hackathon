@@ -26,6 +26,14 @@
             transform: rotate(360deg);
   }
 }
+* {
+    font-family: 'IBM Plex Sans', sans-serif !important;
+
+}
+
+.sort-column-icon {
+    color: gray;
+}
 
 .custom-switch {
     display: inline-block !important;
@@ -57,8 +65,36 @@ tr {
     display: none;
 }
 
+.header-brand > .m-0 {
+    margin-right: 1rem !important;
+    display: inline-block;
+}
+
+#send-trust {
+    display: inline-block;
+}
+
 .grey-background {
     background-color: rgba(0, 0, 0, 0.075);
+}
+
+.wei {
+    width: 0.7rem;
+    display: inline-block;
+}
+
+.md-form {
+    width: 50px;
+    display: inline-block;
+}
+
+.eth-link {
+    color: #007bff !important;
+    text-decoration: underline;
+    white-space: nowrap;
+    width: 400px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .expanded-details {
@@ -73,6 +109,7 @@ tr {
 
 .card-header {
   background-color: #0270d7 !important;
+  border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0 !important;
 }
 
 .form-check-input {
@@ -97,7 +134,7 @@ tr {
 .status-step-icon {
     transform: scale(0.7);
     position: relative;
-    left: -2rem;
+    left: -1.5rem;
 }
 
 .container {
