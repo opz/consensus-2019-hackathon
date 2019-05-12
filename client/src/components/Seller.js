@@ -49,6 +49,8 @@ class Seller extends Component {
   };
 
   handleCreateContract(e) {
+    e.preventDefault();
+    console.log('here');
     try {
       this.props.factory.methods.createContract(
         this.state.contractName,
@@ -144,4 +146,4 @@ class Seller extends Component {
   }
 }
 
-export default withContract(ContractFactory, 'factory')(withWeb3(Seller));
+export default withWeb3(withContract(ContractFactory, 'factory')(Seller));
