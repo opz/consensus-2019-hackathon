@@ -40,12 +40,12 @@ class ContractList extends Component {
       },
       {
         label: "Shipped",
-        field: <MDBInput>Shipped</MDBInput>,
+        field: "heading4",
         sort: "asc"
       },
       {
         label: "Funds",
-        field: <MDBInput>Shipped</MDBInput>,
+        field: "heading5",
         sort: "asc"
       },
     ];

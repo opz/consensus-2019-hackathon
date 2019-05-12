@@ -6,6 +6,8 @@ import {
   MDBCardHeader,
   MDBContainer,
 } from "mdbreact";
+import withContract from "../utils/withContract";
+import ContractFactory from "../contracts/ContractFactory.json";
 import failed from '../dist/images/failed.png'
 import pending from '../dist/images/pending.png'
 import success from '../dist/images/success.png'
@@ -56,7 +58,7 @@ class Buyer extends Component {
           <td>{this.state.contracts[key]["amount"]}</td>
           <td>{this.state.contracts[key]["deposited"]}</td>
           <td>
-            <img className="status-step-icon" src={pend}></img>
+            {/* <img className="status-step-icon" src={pend}></img> */}
           </td>
         </tr>)
     };

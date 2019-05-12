@@ -76,7 +76,9 @@ class Seller extends Component {
   };
 
   handleAmount(){
-    // web3.utils.fromWei(strinVal, "ether");
+    //etherAmount = web3.utils.fromWei(strinVal, "ether");
+    //giantN = web3.utils.toWei(strinVal, "ether");use to set
+    
   }
 
 
