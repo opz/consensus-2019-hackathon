@@ -31,8 +31,18 @@ contract ProductContract {
         require(msg.sender == buyer, "User is not the Buyer");
         _;
     }
+
     modifier onlySeller() {
         require(msg.sender == seller, "User is not the Seller");
+        _;
+    }
+
+    modifier onlyBuyerAndSeller() {
+        require(
+            msg.sender == seller || msg.sender == buyer,
+            "User is not the Seller or Buyer"
+        );
+
         _;
     }
 
@@ -67,7 +77,7 @@ contract ProductContract {
     function withdrawToSeller() external onlySeller {
         require(shipped == true);
         require(delivered == DeliveryStatus.Delivered);
-        require(depoOf() >= amount);
+        require(deposits() >= amount);
         _escrow.close();
         _escrow.beneficiaryWithdraw();
     }
