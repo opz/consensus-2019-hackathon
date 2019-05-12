@@ -44,6 +44,10 @@
     background-color: #0270d7 !important;
 }
 
+.custom-select {
+    width: 25% !important;
+}
+
 tr {
   border-bottom: 0px;
   cursor: pointer;

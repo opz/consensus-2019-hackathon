@@ -32,7 +32,7 @@ class Buyer extends Component {
       <MDBContainer fluid>
         <MDBCardHeader className="mx-auto card-header float-none z-depth-1 w-75 p-3 py-2 px-2" tag="h4">Buyer</MDBCardHeader>
         <MDBCard className="mb-5 mx-auto float-none white z-depth-1 w-75 p-3">
-          <div classNameName="card-body">
+          <div className="card-body">
             <div className="input-group mb-3">
               <div className="input-group-prepend">
                 <span className="input-group-text" id="basic-addon1">@</span>
@@ -40,60 +40,14 @@ class Buyer extends Component {
               <input type="text" className="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"/>
             </div>
               <input type="email" id="defaultLoginFormEmail" className="form-control mb-4" placeholder="Address"/>
-              <input type="email" id="defaultLoginFormEmail" className="w-50 form-control mb-4" placeholder="City"/>
-              <div className="input-group mb-3 w-50">
-              <select className="browser-default custom-select">
-                <option selected>State</option>
-                <option value="1">Virginia</option>
-                <option value="2">New York</option>
-                <option value="3">Pennsylvania</option>
-                <option value="3">California</option>
-                <option value="3">Texas</option>
-                <option value="3">Alaska</option>
-                <option value="3">Florida</option>
-                <option value="3">Oregon</option>
-                <option value="3">Nevada</option>
-                <option value="3">Oklahoma</option>
-              </select>
-              </div>
-              <div className="input-group mb-3">  
-              <input type="email" id="defaultLoginFormEmail" className="form-control mb-4" placeholder="Zip"/>
-              </div>
-            <MDBBtn classNameName="px-2" block id="create-new-contract">
+              
+            <MDBBtn className="px-2 ml-2 mr-2 btn-md w-50" block id="create-new-contract">
               Create New Contract
             </MDBBtn>
           </div>
         </MDBCard>
+        <MDBCardHeader className="mx-auto card-header float-none z-depth-1 w-75 p-3 py-2 px-2" tag="h4">Contracts</MDBCardHeader>
         <div className="card card-cascade narrower w-75 mx-auto float-none">
-
-          <div
-            className="view view-cascade card-header narrower d-flex justify-content-between align-items-center">
-
-            <div>
-              <button type="button" className="btn btn-outline-white btn-rounded btn-sm px-2">
-                <i className="fas fa-th-large mt-0"></i>
-              </button>
-              <button type="button" className="btn btn-outline-white btn-rounded btn-sm px-2">
-                <i className="fas fa-columns mt-0"></i>
-              </button>
-            </div>
-
-            <a href="" className="white-text mx-3">Contracts</a>
-
-            <div>
-              <button type="button" className="btn btn-outline-white btn-rounded btn-sm px-2">
-                <i className="fas fa-pencil-alt mt-0"></i>
-              </button>
-              <button type="button" className="btn btn-outline-white btn-rounded btn-sm px-2">
-                <i className="far fa-trash-alt mt-0"></i>
-              </button>
-              <button type="button" className="btn btn-outline-white btn-rounded btn-sm px-2">
-                <i className="fas fa-info-circle mt-0"></i>
-              </button>
-            </div>
-
-          </div>
-
           <div className="px-4">
 
             <div className="table-wrapper table-responsive">
@@ -135,12 +89,12 @@ class Buyer extends Component {
                   
                   <tr className="expanded-details hidden-details">
               <th></th>
-              <td colspan="4">
-                <button type="button" className="btn  blue-background-button">Withdraw Funds</button>
-                <button type="button" className="btn  blue-background-button">Send Funds</button>
-                <div class="custom-control custom-switch">
-                  <input type="checkbox" class="custom-control-input" id="customSwitches"/>
-                  <label class="custom-control-label" for="customSwitches">Shipment</label>
+              <td colSpan="4">
+                <button type="button" className="btn  blue-background-button">Withdraw</button>
+                <button type="button" className="btn  blue-background-button">Send</button>
+                <div className="custom-control custom-switch">
+                  <input type="checkbox" className="custom-control-input" id="customSwitches"/>
+                  <label className="custom-control-label" for="customSwitches">Shipment</label>
                 </div>
                 <button className="btn  dropdown-toggle mr-4 blue-background-button" type="button" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">Delivery</button>
@@ -163,12 +117,12 @@ class Buyer extends Component {
                   </tr>
               <tr className="expanded-details hidden-details">
               <th></th>
-              <td colspan="4">
-              <button type="button" className="btn  blue-background-button">Withdraw Funds</button>
-                <button type="button" className="btn  blue-background-button">Send Funds</button>
-                <div class="custom-control custom-switch">
-                  <input type="checkbox" class="custom-control-input" id="customSwitches"/>
-                  <label class="custom-control-label" for="customSwitches">Shipment</label>
+              <td colSpan="4">
+              <button type="button" className="btn  blue-background-button">Withdraw</button>
+                <button type="button" className="btn  blue-background-button">Send</button>
+                <div className="custom-control custom-switch">
+                  <input type="checkbox" className="custom-control-input" id="customSwitches"/>
+                  <label className="custom-control-label" for="customSwitches">Shipment</label>
                 </div>
                 <button className="btn  dropdown-toggle mr-4 blue-background-button" type="button" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">Delivery</button>
@@ -191,12 +145,12 @@ class Buyer extends Component {
                   </tr>
                   <tr className="expanded-details hidden-details">
               <th></th>
-              <td colspan="4">
-              <button type="button" className="btn  blue-background-button">Withdraw Funds</button>
-                <button type="button" className="btn  blue-background-button">Send Funds</button>
-                <div class="custom-control custom-switch">
-                  <input type="checkbox" class="custom-control-input" id="customSwitches"/>
-                  <label class="custom-control-label" for="customSwitches">Shipment</label>
+              <td colSpan="4">
+              <button type="button" className="btn  blue-background-button">Withdraw</button>
+                <button type="button" className="btn  blue-background-button">Send</button>
+                <div className="custom-control custom-switch">
+                  <input type="checkbox" className="custom-control-input" id="customSwitches"/>
+                  <label className="custom-control-label" for="customSwitches">Shipment</label>
                 </div>
                 <button className="btn  dropdown-toggle mr-4 blue-background-button" type="button" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">Delivery</button>
@@ -218,12 +172,12 @@ class Buyer extends Component {
                   </tr>
                   <tr className="expanded-details hidden-details">
               <th></th>
-              <td colspan="4">
-              <button type="button" className="btn  blue-background-button">Withdraw Funds</button>
-                <button type="button" className="btn  blue-background-button">Send Funds</button>
-                <div class="custom-control custom-switch">
-                  <input type="checkbox" class="custom-control-input" id="customSwitches"/>
-                  <label class="custom-control-label" for="customSwitches">Shipment</label>
+              <td colSpan="4">
+              <button type="button" className="btn  blue-background-button">Withdraw</button>
+                <button type="button" className="btn  blue-background-button">Send</button>
+                <div className="custom-control custom-switch">
+                  <input type="checkbox" className="custom-control-input" id="customSwitches"/>
+                  <label className="custom-control-label" for="customSwitches">Shipment</label>
                 </div>
                 <button className="btn  dropdown-toggle mr-4 blue-background-button" type="button" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">Delivery</button>
@@ -245,23 +199,19 @@ class Buyer extends Component {
                   </tr>
                   <tr className="expanded-details hidden-details">
               <th></th>
-              <td colspan="4">
-              <button type="button" className="btn blue-background-button">Withdraw Funds</button>
-                <button type="button" className="btn blue-background-button">Send Funds</button>
-                <div class="custom-control custom-switch">
-                  <input type="checkbox" class="custom-control-input" id="customSwitches"/>
-                  <label class="custom-control-label" for="customSwitches">Shipment</label>
+              <td colSpan="5">
+              <button type="button" className="btn blue-background-button">Withdraw</button>
+                <button type="button" className="btn blue-background-button">Send</button>
+                <div className="custom-control custom-switch">
+                  <input type="checkbox" className="custom-control-input" id="customSwitches"/>
+                  <label className="custom-control-label" for="customSwitches">Shipment</label>
                 </div>
-                <button className="btn dropdown-toggle mr-4 blue-background-button" type="button" data-toggle="dropdown"
-                  aria-haspopup="true" aria-expanded="false">Delivery</button>
-
-                <div className="dropdown-menu">
-                  <a className="dropdown-item" href="#">Success</a>
-                  <a className="dropdown-item" href="#">In Progress...</a>
-                  <a className="dropdown-item" href="#">Failed</a>
-                  <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="#">Separated link</a>
-                </div>
+                <select class="browser-default custom-select">
+                  <option selected>Delivery</option>
+                  <option value="1">Success</option>
+                  <option value="2">In Progress...</option>
+                  <option value="3">Failure</option>
+                </select>
                </td>
                </tr>
                 </tbody>
