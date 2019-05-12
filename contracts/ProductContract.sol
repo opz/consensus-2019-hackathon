@@ -61,13 +61,13 @@ contract ProductContract {
     }
 
     function setDelivered(DeliveryStatus _delivered) external onlyBuyer {
-        delivered = _delivered;
-
-        if (delivered == DeliveryStatus.Failed) {
+        if (_delivered == DeliveryStatus.Failed) {
             _escrow.enableRefunds();
-        } else {
+        } else if (delivered == DeliveryStatus.Failed) {
             _escrow.disableRefunds();
         }
+
+        delivered = _delivered;
     }
 
     function setShipped(bool _shipped) external onlySeller {
