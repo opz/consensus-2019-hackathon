@@ -31,6 +31,10 @@
 
 }
 
+.sort-column-icon {
+    color: gray;
+}
+
 .custom-switch {
     display: inline-block !important;
     margin: 0 1rem;
