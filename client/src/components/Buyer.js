@@ -68,7 +68,6 @@ class Buyer extends Component {
   render() {
     let contractRows = [];
     for (let key in this.state.contracts) {
-      console.log(this.state.contracts[0]["amount"]);
       contractRows.push(
         <tr>
           <th scope="row">

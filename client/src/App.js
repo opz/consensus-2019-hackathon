@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./App.css";
-import { MDBBtn } from "mdbreact";
 import withWeb3 from "./utils/withWeb3";
 
 class App extends Component {
