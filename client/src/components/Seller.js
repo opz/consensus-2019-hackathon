@@ -115,32 +115,24 @@ class Seller extends Component {
   render() {
     return (
       <MDBContainer fluid>
-        <MDBFreeBird>
         <MDBRow>
             <MDBCol className="mx-auto float-none ">
-              <MDBCard className="mx-auto float-none white z-depth-1">
-                <MDBCardHeader className="py-2 px-2" color="primary-color" tag="h4"> Add a contract </MDBCardHeader>
-                <div className="card-body">
-                  <form
-                    className="needs-validation"
-                    onSubmit={this.handleCreateContract}
-                    noValidate>
-                    <div >
-                      <MDBInput size="sm" className="px-2" label="Name"
-                        required icon="user" type="email" value={this.state.contractName} onChange={this.handleContractNameChange} />
-                      <MDBInput size="sm" className="px-2" label="Buyer address"
-                        required icon="lock" onChange={this.handleBuyerAddressChange} value={this.state.buyerAddress} />
-                    </div>
-                    <div className="text-center mt-3">
-                      <MDBBtn
-                        color="primary"
-                        type="submit">
-                        Create Contract
-                      </MDBBtn>
-                    </div>
-                  </form>
+            <MDBCardHeader className="mx-auto card-header float-none z-depth-1 w-75 p-3 py-2 px-2" tag="h4">Create a Contract</MDBCardHeader>
+            <MDBCard className="mb-5 mx-auto float-none white z-depth-1 w-75 p-3">
+              <div className="card-body">
+                <div className="input-group mb-3">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text" id="basic-addon1">@</span>
+                  </div>
+                  <input type="text" className="form-control" placeholder="Name" aria-label="Username" aria-describedby="basic-addon1" value={this.state.contractName} onChange={this.handleContractNameChange}/>
                 </div>
-              </MDBCard>
+                  <input type="email" id="defaultLoginFormEmail" className="form-control mb-4" placeholder="Address" value={this.state.buyerAddress} onChange={this.handleBuyerAddressChange}/>
+                  
+                <MDBBtn className="px-2 ml-2 mr-2 btn-md w-50" block id="create-new-contract" onClick={this.handleCreateContract}>
+                  Create New Contract
+                </MDBBtn>
+              </div>
+            </MDBCard>
             </MDBCol>
           </MDBRow>
 
@@ -155,7 +147,6 @@ class Seller extends Component {
               />
             </Col>
           </Row>
-        </MDBFreeBird>
 
       </MDBContainer>
     );
