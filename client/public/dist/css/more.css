@@ -56,6 +56,10 @@
     width: 25% !important;
 }
 
+.hero-paragraph {
+    color: white;
+}
+
 tr {
   border-bottom: 0px;
   cursor: pointer;
@@ -76,6 +80,22 @@ tr {
 
 #send-trust > a {
     color: white;
+    font-weight: 600;
+}
+
+.buyer-button {
+    background-color:#069dcd;
+}
+
+.buyer-button:hover{
+    background-color: #05516a;
+}
+
+.seller-button {
+    background-color: #0270d7 !important;
+}
+.seller-button:hover{
+    background-color: #063e73 !important;
 }
 
 .grey-background {
