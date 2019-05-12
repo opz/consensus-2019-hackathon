@@ -50,7 +50,6 @@ class Seller extends Component {
 
   handleCreateContract(e) {
     e.preventDefault();
-    console.log('here');
     try {
       this.props.factory.methods.createContract(
         this.state.contractName,
