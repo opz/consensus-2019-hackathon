@@ -73,22 +73,22 @@ class PrettyContractList extends Component {
                   <tr>
                     <th className="th-lg">
                       <a> Name
-                        <i className="fas fa-sort ml-1"></i>
+                      <span className="sort-column-icon"> ⇅</span>
                       </a>
                     </th>
                     <th className="th-lg">
                       <a href=""> Amount
-                        <i className="fas fa-sort ml-1"></i>
+                      <span className="sort-column-icon"> ⇅</span>
                       </a>
                     </th>
                     <th className="th-lg">
                       <a href=""> Deposited
-                        <i className="fas fa-sort ml-1"></i>
+                      <span className="sort-column-icon"> ⇅</span>
                       </a>
                     </th>
                     <th className="th-md">
                       <a href="">Status
-                        <i className="fas fa-sort ml-1"></i>
+                      <span className="sort-column-icon"> ⇅</span>  
                       </a>
                     </th>
                   </tr>
