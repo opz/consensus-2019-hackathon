@@ -9,8 +9,8 @@ class Routes extends React.Component {
     return (
       <Switch>
         <Route exact path="/" component={App} />
-        <Route exact path="/seller" component={Seller} />
-        <Route exact path="/buyer" component={Buyer} />
+        <Route exact path="/seller" component={Seller} isSeller={true} />
+        <Route exact path="/buyer" component={Buyer} isSeller={false}/>
         <Route
           render={function() {
             return <h1>Not Found</h1>;

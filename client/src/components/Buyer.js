@@ -6,12 +6,28 @@ import {
   MDBCardHeader,
   MDBContainer,
 } from "mdbreact";
+import withContract from "../utils/withContract";
+import ContractFactory from "../contracts/ContractFactory.json";
 import failed from '../dist/images/failed.png'
 import pending from '../dist/images/pending.png'
 import success from '../dist/images/success.png'
 
 class Buyer extends Component {
-  state = {
+  constructor(props) {
+    super(props);
+    this.state = {
+      contractName: "",
+      buyerAddress: "",
+      contracts: {},
+    };
+
+    this.handleContractNameChange = this.handleContractNameChange.bind(this);
+    this.handleBuyerAddressChange = this.handleBuyerAddressChange.bind(this);
+    //this.handleCreateContract = this.handleCreateContract.bind(this);
+  }
+
+  handleContractNameChange(e) {
+    this.setState({ contractName: e.target.value });
   };
 
   expandRow(el) {
@@ -30,6 +46,23 @@ class Buyer extends Component {
   };
 
   render() {
+    let contractRows = [];
+    for (let key in this.state.contracts) {
+      contractRows.push(
+        <tr>
+          <th scope="row">
+            <input className="form-check-input" type="checkbox" id="checkbox1" />
+            <label className="form-check-label" for="checkbox1" className="label-table"></label>
+          </th>
+          <td>{this.state.contracts[key]["name"]}</td>
+          <td>{this.state.contracts[key]["amount"]}</td>
+          <td>{this.state.contracts[key]["deposited"]}</td>
+          <td>
+            {/* <img className="status-step-icon" src={pend}></img> */}
+          </td>
+        </tr>)
+    };
+
     return (
       <MDBContainer fluid>
         <MDBCardHeader className="mx-auto card-header float-none z-depth-1 w-75 p-3 py-2 px-2" tag="h4">Buyer</MDBCardHeader>
@@ -213,5 +246,4 @@ class Buyer extends Component {
 }
 
 
-
-export default withWeb3(Buyer);
+export default withWeb3(withContract(ContractFactory, 'factory')(Buyer));
