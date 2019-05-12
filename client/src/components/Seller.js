@@ -3,6 +3,7 @@ import withWeb3 from "../utils/withWeb3";
 import withContract from "../utils/withContract"
 import ContractFactory from "../contracts/ContractFactory.json"
 import ProductContract from "../contracts/ProductContract.json"
+import { wrapContracts } from '../utils/shared';
 import {
   Card,
   CardBody,
@@ -76,8 +77,7 @@ class Seller extends Component {
               return contract.methods.getDetails().call();
             })
         );
-        console.log(results);
-        this.setState({ contracts: results });
+        this.setState({ contracts: wrapContracts(results) });
       } catch (e) {
         console.log(e);
       }
@@ -91,7 +91,9 @@ class Seller extends Component {
       contractRows.push(
         {
           id: index += 1,
-          heading0: this.state.contracts[key],
+          heading0: this.state.contracts[key]["name"],
+          heading1: this.state.contracts[key]["amount"],
+          heading2: this.state.contracts[key]["deposited"],
         })
     };
 
@@ -104,6 +106,16 @@ class Seller extends Component {
       {
         label: "Name",
         field: "heading0",
+        sort: "asc"
+      },
+      {
+        label: "Amount",
+        field: "heading1",
+        sort: "asc"
+      },
+      {
+        label: "Deposited",
+        field: "heading2",
         sort: "asc"
       },
     ];
@@ -135,7 +147,6 @@ class Seller extends Component {
                     </div>
                   </form>
                 </div>
-
               </MDBCard>
             </MDBCol>
           </MDBRow>
