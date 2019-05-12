@@ -31,8 +31,18 @@ contract ProductContract {
         require(msg.sender == buyer, "User is not the Buyer");
         _;
     }
+
     modifier onlySeller() {
         require(msg.sender == seller, "User is not the Seller");
+        _;
+    }
+
+    modifier onlyBuyerAndSeller() {
+        require(
+            msg.sender == seller || msg.sender == buyer,
+            "User is not the Seller or Buyer"
+        );
+
         _;
     }
 
@@ -64,26 +74,21 @@ contract ProductContract {
         shipped = _shipped;
     }
 
-    function setBuyer(address payable _buyer) public payable onlySeller {
-        buyer = _buyer;
-        // set buyerToContract mapping in factory
-    }
-
-    function withdrawToSeller() public onlySeller {
+    function withdrawToSeller() external onlySeller {
         require(shipped == true);
         require(delivered == DeliveryStatus.Delivered);
-        require(depoOf() >= amount);
+        require(deposits() >= amount);
         _escrow.close();
         _escrow.beneficiaryWithdraw();
     }
 
-    function withdrawToBuyer() public onlyBuyer {
+    function withdrawToBuyer() external onlyBuyer {
         require(shipped == true);
         require(delivered == DeliveryStatus.Failed);
         _escrow.withdraw(buyer);
     }
 
-    function depoOf() public view returns (uint256) {
+    function deposits() public view returns (uint256) {
         return _escrow.depositsOf(buyer);
     }
 
@@ -92,8 +97,16 @@ contract ProductContract {
         view
         onlyBuyer
         onlySeller
-        returns (string memory, address, address, uint256, bool, DeliveryStatus)
+        returns (
+            string memory, 
+            address, 
+            address, 
+            uint256, 
+            uint256, 
+            bool, 
+            DeliveryStatus
+        )
     {
-        return (name, seller, buyer, amount, shipped, delivered);
+        return (name, seller, buyer, amount, deposits(), shipped, delivered);
     }
 }

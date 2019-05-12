@@ -1,0 +1,27 @@
+{
+  "name": "consensus-2019-hackathon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "openzeppelin-solidity": "^2.2.0",
+    "truffle-hdwallet-provider": "^1.0.9"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/opz/consensus-2019-hackathon.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/opz/consensus-2019-hackathon/issues"
+  },
+  "homepage": "https://github.com/opz/consensus-2019-hackathon#readme"
+}
