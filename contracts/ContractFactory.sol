@@ -17,7 +17,7 @@ contract ContractFactory {
             name
         );
         sellerToContracts[msg.sender].push(address(pcontract));
-        buyerToContracts[msg.sender].push(address(pcontract));
+        buyerToContracts[buyer].push(address(pcontract));
     }
 
     function getSellerContracts(address seller)
