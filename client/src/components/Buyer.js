@@ -43,10 +43,12 @@ class Buyer extends Component {
     }
   }
 
-  handleSendMoney(e, contract) {
-    //convertToWei
-    contract.methods.sendFunds(e.target.value).send({
+  handleSendMoney(amount, contract) {
+    console.log(amount);
+    const weiNumber = this.props.web3.utils.toWei(String(amount), "ether");
+    contract.methods.sendFunds().send({
       "from": this.props.accounts[0],
+      "value": weiNumber,
     });
   };
 
