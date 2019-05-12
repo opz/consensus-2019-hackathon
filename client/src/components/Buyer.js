@@ -2,10 +2,6 @@ import React, { Component } from "react";
 import withWeb3 from "../utils/withWeb3";
 import withContract from "../utils/withContract";
 import ContractFactory from "../contracts/ContractFactory.json";
-import failed from '../dist/images/failed.png'
-import pending from '../dist/images/pending.png'
-import success from '../dist/images/success.png'
-import wei from '../dist/images/ethereum-logo.png'
 import PrettyContractList from "./PrettyContractList";
 import ProductContract from "../contracts/ProductContract.json";
 import { wrapContracts } from '../utils/shared';
@@ -39,7 +35,7 @@ class Buyer extends Component {
               return contract.methods.getDetails().call();
             })
         );
-        let w = wrapContracts(results, web3ContractObjects);
+        let w = wrapContracts(results, web3ContractObjects, this.props.web3);
         this.setState({ contracts: w });
       } catch (e) {
         console.log(e);
