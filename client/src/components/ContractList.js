@@ -56,11 +56,13 @@ class ContractList extends Component {
         {
           id: index += 1,
           heading0: this.props.contracts[key]["name"],
-          heading1: this.props.contracts[key]["amount"],
+          //heading1: this.props.contracts[key]["amount"],
+          heading1:
+          <MDBInput onKeyDown={(e) => this.props.handleAmountChange(e, this.props.contracts[key]["object"])}></MDBInput>,
           heading2: this.props.contracts[key]["deposited"],
           heading3: getDeliveredText(parseInt(this.props.contracts[key]["delivered"])),
           heading4:
-          <select className="browser-default custom-select" defaultValue={this.props.contracts[key]["shipped"]} onChange={(e) => this.props.handleShippedChange(e, this.props.contracts[key]["object"])}>
+          <select className="browser-default custom-select" defaultValue={String(this.props.contracts[key]["shipped"])} onChange={(e) => this.props.handleShippedChange(e, this.props.contracts[key]["object"])}>
             <option value="false" >False</option>
             <option value="true" >True</option>
           </select>,

@@ -5,6 +5,7 @@ import ContractFactory from "../contracts/ContractFactory.json";
 import ProductContract from "../contracts/ProductContract.json";
 import { wrapContracts } from '../utils/shared';
 import ContractList from "./ContractList";
+import web3 from 'web3';
 import {
   Card,
   CardBody,
@@ -39,6 +40,7 @@ class Seller extends Component {
     this.handleCreateContract = this.handleCreateContract.bind(this);
     this.handleShippedChange = this.handleShippedChange.bind(this);
     this.handleWithdrawFunds = this.handleWithdrawFunds.bind(this);
+    this.handleAmountChange = this.handleAmountChange.bind(this);
   }
 
   handleContractNameChange(e) {
@@ -75,10 +77,14 @@ class Seller extends Component {
     });
   };
 
-  handleAmount(){
-    //etherAmount = web3.utils.fromWei(strinVal, "ether");
-    //giantN = web3.utils.toWei(strinVal, "ether");use to set
-    
+  handleAmountChange(e, contract) {
+    if (e.key === 'Enter') {
+      //etherAmount = web3.utils.fromWei(strinVal, "ether");
+      const weiNumber = web3.utils.toWei(e.target.value, "ether");
+      contract.methods.setAmount(weiNumber).send({
+        "from": this.props.accounts[0],
+      });
+    }
   }
 
 
@@ -145,6 +151,7 @@ class Seller extends Component {
                 contracts={this.state.contracts} 
                 handleShippedChange={this.handleShippedChange}
                 handleWithdrawFunds={this.handleWithdrawFunds}
+                handleAmountChange={this.handleAmountChange}
               />
             </Col>
           </Row>
