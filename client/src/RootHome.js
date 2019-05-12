@@ -15,6 +15,7 @@ class RootHome extends React.Component {
                     <img className="header-logo-image" src="dist/images/logo.svg" alt="Logo" />
                   </a>
                 </h1>
+                <h1 id="send-trust">SendTrust</h1>
               </div>
             </div>
           </div>

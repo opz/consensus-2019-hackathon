@@ -26,6 +26,10 @@
             transform: rotate(360deg);
   }
 }
+* {
+    font-family: 'IBM Plex Sans', sans-serif !important;
+
+}
 
 .custom-switch {
     display: inline-block !important;
@@ -55,6 +59,15 @@ tr {
 
 .hidden-details {
     display: none;
+}
+
+.header-brand > .m-0 {
+    margin-right: 1rem !important;
+    display: inline-block;
+}
+
+#send-trust {
+    display: inline-block;
 }
 
 .grey-background {
