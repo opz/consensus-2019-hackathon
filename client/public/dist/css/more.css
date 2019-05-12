@@ -74,6 +74,10 @@ tr {
     display: inline-block;
 }
 
+#send-trust > a {
+    color: white;
+}
+
 .grey-background {
     background-color: rgba(0, 0, 0, 0.075);
 }
@@ -118,6 +122,9 @@ tr {
   position: unset;
 }
 
+.body-wrap {
+    min-height: unset;
+}
 .body-wrap > main {
     margin-top: 0 !important;
 }
