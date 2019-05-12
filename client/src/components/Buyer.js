@@ -6,10 +6,7 @@ import {
   MDBCardHeader,
   MDBContainer,
 } from "mdbreact";
-import active from '../dist/images/active.png'
 import failed from '../dist/images/failed.png'
-import passing from '../dist/images/passing.png'
-import pend from '../dist/images/pend.png'
 import pending from '../dist/images/pending.png'
 import success from '../dist/images/success.png'
 
@@ -17,10 +14,23 @@ class Buyer extends Component {
   state = {
   };
 
+  expandRow(el) {
+    console.log(el.currentTarget, el.currentTarget.classList);
+    if (el.currentTarget.classList.contains('collapsed')) {
+      //reveal
+      el.currentTarget.nextSibling.classList.remove('hidden-details');
+      el.currentTarget.classList.remove('collapsed');
+    } else {
+      //hide
+      el.currentTarget.classList.add('collapsed');
+      el.currentTarget.nextSibling.classList.add('hidden-details');
+    }
+  };
+
   render() {
     return (
       <MDBContainer fluid>
-        <MDBCardHeader className="mx-auto float-none z-depth-1 w-75 p-3 py-2 px-2" tag="h4">Buyer</MDBCardHeader>
+        <MDBCardHeader className="mx-auto card-header float-none z-depth-1 w-75 p-3 py-2 px-2" tag="h4">Buyer</MDBCardHeader>
         <MDBCard className="mb-5 mx-auto float-none white z-depth-1 w-75 p-3">
           <div className="card-body">
             <div class="input-group mb-3">
@@ -49,7 +59,7 @@ class Buyer extends Component {
               <div class="input-group mb-3">  
               <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="Zip"/>
               </div>
-            <MDBBtn className="px-2" block color="danger">
+            <MDBBtn className="px-2" block id="create-new-contract">
               Create New Contract
             </MDBBtn>
           </div>
@@ -57,7 +67,7 @@ class Buyer extends Component {
         <div class="card card-cascade narrower w-75 mx-auto float-none">
 
           <div
-            class="view view-cascade gradient-card-header blue-gradient narrower d-flex justify-content-between align-items-center">
+            class="view view-cascade card-header narrower d-flex justify-content-between align-items-center">
 
             <div>
               <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2">
@@ -68,7 +78,7 @@ class Buyer extends Component {
               </button>
             </div>
 
-            <a href="" class="white-text mx-3">Table name</a>
+            <a href="" class="white-text mx-3">Contracts</a>
 
             <div>
               <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2">
@@ -90,10 +100,6 @@ class Buyer extends Component {
               <table class="table table-sm table-hover mb-0">
                 <thead>
                   <tr>
-                    <th>
-                      <input class="form-check-input" type="checkbox" id="checkbox" />
-                      <label class="form-check-label" for="checkbox" class="mr-2 label-table"></label>
-                    </th>
                     <th class="th-lg">
                       <a>Name
                         <i class="fas fa-sort ml-1"></i>
@@ -109,7 +115,7 @@ class Buyer extends Component {
                         <i class="fas fa-sort ml-1"></i>
                       </a>
                     </th>
-                    <th class="th-lg">
+                    <th class="th-md">
                       <a href="">Status
                         <i class="fas fa-sort ml-1"></i>
                       </a>
@@ -117,70 +123,72 @@ class Buyer extends Component {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">
-                      <input class="form-check-input" type="checkbox" id="checkbox1" />
-                      <label class="form-check-label" for="checkbox1" class="label-table"></label>
-                    </th>
+                  <tr onClick={(e) => this.expandRow(e)} class="collapsed">
+                    
                     <td>Mark</td>
                     <td>@mdo</td>
                     <td>Mark</td>
                     <td>
-                      <img class="status-step-icon" src={pend}></img>
+                      <img class="status-step-icon" src={pending}></img>
                     </td>
                   </tr>
                   
-                  <tr>
-                    {/* <div> */}
-                      {/* <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample"
-                        aria-expanded="false" aria-controls="collapseExample">
-                        Button with data-target
-                      </button> */}
-                      <th scope="row" data-toggle="collapse" data-target="#collapseExample"
-                        aria-expanded="false" aria-controls="collapseExample">
-                        <input class="form-check-input" type="checkbox" id="checkbox2"/>
-                        <label class="form-check-label" for="checkbox2" class="label-table"></label>
-                      </th>
+                  <tr class="expanded-details hidden-details">
+              <th></th>
+              <td colspan="4">aw;oeifjawefoeifjawef
+               oeifjawef oeifjawef oeifjawef oeifjawefoeifjawef oeifjawef oeifjawef oeifjawef oeifjawef
+               </td>
+               </tr>
+                  
+                  <tr onClick={(e) => this.expandRow(e)} class="collapsed">
                       <td>Jacob</td>
                       <td>@fat</td>
                       <td>Jacob</td>
-                      <td><img class="status-step-icon" src={active}></img></td>
-                    {/* </div> */}
-
-                    <div class="collapse" id="collapseExample">
-                      
-                    </div>
+                      <td><img class="status-step-icon" src={success}></img></td>
                   </tr>
-                  <tr>
-                    <th scope="row">
-                      <input class="form-check-input" type="checkbox" id="checkbox3"/>
-                      <label class="form-check-label" for="checkbox3" class="label-table"></label>
-                    </th>
+              <tr class="expanded-details hidden-details">
+              <th></th>
+              <td colspan="4">aw;oeifjawefoeifjawef
+               oeifjawef oeifjawef oeifjawef oeifjawefoeifjawef oeifjawef oeifjawef oeifjawef oeifjawef
+               </td>
+               </tr>
+                  <tr onClick={(e) => this.expandRow(e)} class="collapsed">
+                    
                     <td>Larry</td>
                     <td>@twitter</td>
                     <td>Larry</td>
                     <td><img class="status-step-icon" src={failed}></img></td>
                   </tr>
-                  <tr>
-                    <th scope="row">
-                      <input class="form-check-input" type="checkbox" id="checkbox4"/>
-                      <label class="form-check-label" for="checkbox4" class="label-table"></label>
-                    </th>
+                  <tr class="expanded-details hidden-details">
+              <th></th>
+              <td colspan="4">aw;oeifjawefoeifjawef
+               oeifjawef oeifjawef oeifjawef oeifjawefoeifjawef oeifjawef oeifjawef oeifjawef oeifjawef
+               </td>
+               </tr>
+                  <tr onClick={(e) => this.expandRow(e)} class="collapsed">
                     <td>Paul</td>
                     <td>@P_Topolski</td>
                     <td>Paul</td>
-                    <td><img class="status-step-icon" src={passing}></img></td>
+                    <td><img class="status-step-icon" src={pending}></img></td>
                   </tr>
-                  <tr>
-                    <th scope="row">
-                      <input class="form-check-input" type="checkbox" id="checkbox5"/>
-                      <label class="form-check-label" for="checkbox5" class="label-table"></label>
-                    </th>
+                  <tr class="expanded-details hidden-details">
+              <th></th>
+              <td colspan="4">aw;oeifjawefoeifjawef
+               oeifjawef oeifjawef oeifjawef oeifjawefoeifjawef oeifjawef oeifjawef oeifjawef oeifjawef
+               </td>
+               </tr>
+                  <tr onClick={(e) => this.expandRow(e)} class="collapsed">
                     <td>Larry</td>
                     <td>@twitter</td>
                     <td>Larry</td>
                     <td><img class="status-step-icon" src={success}></img></td>
                   </tr>
+                  <tr class="expanded-details hidden-details">
+              <th></th>
+              <td colspan="4">aw;oeifjawefoeifjawef
+               oeifjawef oeifjawef oeifjawef oeifjawefoeifjawef oeifjawef oeifjawef oeifjawef oeifjawef
+               </td>
+               </tr>
                 </tbody>
               </table>
             </div>

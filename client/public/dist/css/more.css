@@ -27,6 +27,41 @@
   }
 }
 
+.site-header::before {
+    z-index: -1;
+}
+
+#create-new-contract {
+    background-color: #0270d7 !important;
+}
+
+tr {
+  border-bottom: 0px;
+  cursor: pointer;
+}
+
+.hidden-details {
+    display: none;
+}
+
+.expanded-details {
+  text-align: center;
+}
+
+.expanded-details > td , .expanded-details > th{
+    border-top: none !important;
+}
+
+.card-header {
+  background-color: #0270d7 !important;
+}
+
+.form-check-input {
+  margin-top: 0;
+  margin-left: 0;
+  position: unset;
+}
+
 .body-wrap > main {
     margin-top: 0 !important;
 }
@@ -41,9 +76,9 @@
 }
 
 .status-step-icon {
-    transform: scale(0.5);
+    transform: scale(0.7);
     position: relative;
-    left: -44px;
+    left: -2rem;
 }
 
 .container {
