@@ -7,7 +7,6 @@ import {
   TableHead,
   MDBBtn,
   MDBInput,
-  MDBContainer,
 } from "mdbreact";
 import { getDeliveredText } from '../utils/shared';
 

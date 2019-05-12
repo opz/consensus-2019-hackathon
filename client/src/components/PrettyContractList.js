@@ -1,14 +1,7 @@
 import React, { Component } from "react";
 import {
-  Card,
-  CardBody,
-  Table,
-  TableBody,
-  TableHead,
   MDBContainer,
   MDBCardHeader,
-  MDBBtn,
-  MDBInput,
 } from "mdbreact";
 import { getDeliveredText } from '../utils/shared';
 import failed from '../dist/images/failed.png'
