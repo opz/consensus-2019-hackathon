@@ -45,7 +45,7 @@ class PrettyContractList extends Component {
             <th></th>
             <td colSpan="4">
               <button type="button" className="btn  blue-background-button" onClick={(e) => this.props.handleWithdraw(this.props.contracts[key]["object"])}>Withdraw</button>
-              <button type="button" className="btn  blue-background-button" onClick={(e) => this.props.handleSendMoney(e, this.props.contracts[key]["object"])}>Send</button>
+              <button type="button" className="btn  blue-background-button" onClick={(e) => this.props.handleSendMoney(this.props.contracts[key]["amount"], this.props.contracts[key]["object"])}>Send</button>
               <div className="custom-control custom-switch">
                 <input type="checkbox" className="custom-control-input" disabled={true} id="customSwitches" />
                 <label className="custom-control-label" for="customSwitches">Shipped</label>
