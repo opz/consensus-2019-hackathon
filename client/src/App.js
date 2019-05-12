@@ -67,10 +67,10 @@ class App extends Component {
               <div className="hero-inner">
                 <div className="hero-copy">
                   <h1 className="hero-title mt-0">Enabling trust between buyers and sellers.</h1>
-                  <p className="hero-paragraph">Our landing page template works on all devices, so you only have to set it up once, and get beautiful results forever.</p>
+                  <p className="hero-paragraph">Set up an escrow contract on the ethereum blockchain.</p>
                   <div className="hero-cta">
-                    <a className="button button-primary" href="/seller"> Sellers </a>
-                    <a className="button" href="/buyer"> Buyers </a>
+                    <a className="button seller-button" href="/seller"> Sellers </a>
+                    <a className="button buyer-button" href="/buyer"> Buyers </a>
                   </div>
                 </div>
                 <div className="hero-figure anime-element">
