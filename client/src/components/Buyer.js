@@ -59,6 +59,7 @@ class Buyer extends Component {
   };
 
   handleDeliveryChange(e, contract) {
+    console.log(e.target.value);
     contract.methods.setDelivered(e.target.value).send({
       "from": this.props.accounts[0],
     });
