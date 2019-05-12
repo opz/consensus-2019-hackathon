@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import withWeb3 from "../utils/withWeb3";
-import withContract from "../utils/withContract"
-import ContractFactory from "../contracts/ContractFactory.json"
-import ProductContract from "../contracts/ProductContract.json"
+import withContract from "../utils/withContract";
+import ContractFactory from "../contracts/ContractFactory.json";
+import ProductContract from "../contracts/ProductContract.json";
 import { wrapContracts } from '../utils/shared';
+import ContractList from "./ContractList";
+import web3 from 'web3';
 import {
   Card,
   CardBody,
@@ -36,6 +38,9 @@ class Seller extends Component {
     this.handleContractNameChange = this.handleContractNameChange.bind(this);
     this.handleBuyerAddressChange = this.handleBuyerAddressChange.bind(this);
     this.handleCreateContract = this.handleCreateContract.bind(this);
+    this.handleShippedChange = this.handleShippedChange.bind(this);
+    this.handleWithdrawFunds = this.handleWithdrawFunds.bind(this);
+    this.handleAmountChange = this.handleAmountChange.bind(this);
   }
 
   handleContractNameChange(e) {
@@ -58,26 +63,49 @@ class Seller extends Component {
     } catch (e) {
       console.log(e);
     }
+  };
+  
+  handleShippedChange(e, contract) {
+    contract.methods.setShipped(e.target.value).send({
+      "from": this.props.accounts[0],
+    });
+  };
+
+  handleWithdrawFunds(e, contract) {
+    contract.methods.withdrawToSeller().send({
+      "from": this.props.accounts[0],
+    });
+  };
+
+  handleAmountChange(e, contract) {
+    if (e.key === 'Enter') {
+      //etherAmount = web3.utils.fromWei(strinVal, "ether");
+      const weiNumber = web3.utils.toWei(e.target.value, "ether");
+      contract.methods.setAmount(weiNumber).send({
+        "from": this.props.accounts[0],
+      });
+    }
   }
+
 
   async componentDidUpdate(prevProps) {
     if (this.props.factory !== prevProps.factory) {
       try {
-        const contracts = await this.props.factory.methods.getSellerContracts(this.props.accounts[0]).call();
-        console.log(contracts);
+        const contractsHashes = await this.props.factory.methods.getSellerContracts(this.props.accounts[0]).call();
+        let web3ContractObjects = [];
         const results = await Promise.all(
-          Array.from(Array(contracts.length).keys()).reverse().map(index => {
+          Array.from(Array(contractsHashes.length).keys()).reverse().map(index => {
               //create a contract instance from address
-              console.log("before");
               const contract = new this.props.web3.eth.Contract(
                 ProductContract.abi,
-                contracts[index],
+                contractsHashes[index],
               );
-              console.log("after");
+              web3ContractObjects.push(contract);
               return contract.methods.getDetails().call();
             })
         );
-        this.setState({ contracts: wrapContracts(results) });
+        let w = wrapContracts(results, web3ContractObjects);
+        this.setState({ contracts: w });
       } catch (e) {
         console.log(e);
       }
@@ -85,41 +113,6 @@ class Seller extends Component {
   }
 
   render() {
-    let contractRows = [];
-    let index = 0;
-    for (let key in this.state.contracts) {
-      contractRows.push(
-        {
-          id: index += 1,
-          heading0: this.state.contracts[key]["name"],
-          heading1: this.state.contracts[key]["amount"],
-          heading2: this.state.contracts[key]["deposited"],
-        })
-    };
-
-    const columns = [
-      {
-        label: "#",
-        field: "id",
-        sort: "asc"
-      },
-      {
-        label: "Name",
-        field: "heading0",
-        sort: "asc"
-      },
-      {
-        label: "Amount",
-        field: "heading1",
-        sort: "asc"
-      },
-      {
-        label: "Deposited",
-        field: "heading2",
-        sort: "asc"
-      },
-    ];
-
     return (
       <MDBContainer fluid>
         <MDBFreeBird>
@@ -154,20 +147,12 @@ class Seller extends Component {
         <hr className="my-2" />
           <Row >
             <Col md="12">
-              <Card>
-                <CardBody>
-                  <h2 className="h2-responsive pb-4">Your Accounts</h2>
-                  <Table responsive small>
-                    <TableHead
-                      columns={columns}
-                      color="primary-color"
-                      textWhite
-                    />
-                    <TableBody rows={contractRows}
-                    />
-                  </Table>
-                </CardBody>
-              </Card>
+              <ContractList 
+                contracts={this.state.contracts} 
+                handleShippedChange={this.handleShippedChange}
+                handleWithdrawFunds={this.handleWithdrawFunds}
+                handleAmountChange={this.handleAmountChange}
+              />
             </Col>
           </Row>
         </MDBFreeBird>
