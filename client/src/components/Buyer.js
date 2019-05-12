@@ -92,7 +92,7 @@ class Buyer extends Component {
                     </div>
                     <img class="wei" src={wei}></img></td>
                     <td>
-                    0x182hf038rf72hf982jd
+                    <a className="eth-link" href="https://etherscan.io/tx/0x6f91a68c7142cdc9502b9ac5c2b2498d651c474640d12cccc3d510d0fe45e2fc">0xab98e6106d522665f44ac8a4666e65888861b90b</a>
                     </td>
                     <td>
                       <img className="status-step-icon" src={pending}></img>
@@ -126,7 +126,7 @@ class Buyer extends Component {
                     </div>
                     <img class="wei" src={wei}></img>
                       </td>
-                      <td>0x9238hr74gthf9283</td>
+                      <td><a className="eth-link" href="https://etherscan.io/tx/0xb459956d6ce422c0f964495fbc66db6cc3dc49669f09e447204d7aed0f7ae52f">0xc1ae7f065b76a70a92e039d00a66e937cd235fe7</a></td>
                       <td><img className="status-step-icon" src={success}></img></td>
                   </tr>
               <tr className="expanded-details hidden-details">
@@ -156,7 +156,7 @@ class Buyer extends Component {
                     </div>
                     <img class="wei" src={wei}></img>
                     </td>
-                    <td>0x9283hf3874gg32</td>
+                    <td><a className="eth-link" href="https://etherscan.io/tx/0xa64b01f14d7b019db5e13ed2da7cb30ae3c0fe6eeeb43a4e60e568db6f0817c1">0xeaaa806967e270713fdda55c8f66cb72b88a34c3</a></td>
                     <td><img className="status-step-icon" src={failed}></img></td>
                   </tr>
                   <tr className="expanded-details hidden-details">
@@ -186,7 +186,7 @@ class Buyer extends Component {
                     </div>
                     <img class="wei" src={wei}></img>
                     </td>
-                    <td>0x9238fh8374g4</td>
+                    <td><a className="eth-link" href="https://etherscan.io/tx/0xd4e1175e9d79f5843a3092c2505cb811a4202cc3fa483da244f486dff3a7edf4">0x1943fca00ccad9f0c00ad73ade04bc683c9adc06</a></td>
                     <td><img className="status-step-icon" src={pending}></img></td>
                   </tr>
                   <tr className="expanded-details hidden-details">
@@ -214,7 +214,7 @@ class Buyer extends Component {
                       <label for="inputPrefilledEx2"></label>
                     </div>
                     <img class="wei" src={wei}></img></td>
-                    <td>0x23r76t34t8749</td>
+                    <td><a className="eth-link" href="https://etherscan.io/tx/0xe6cd0830a0bb43b13c79ac417545986473a5c61839a4e3db2aa7859bf20351a2">0x16cb111ac81289d37760bf5c09cc7812bc4f00a4</a></td>
                     <td><img className="status-step-icon" src={success}></img></td>
                   </tr>
                   <tr className="expanded-details hidden-details">

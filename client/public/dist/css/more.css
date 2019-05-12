@@ -88,6 +88,15 @@ tr {
     display: inline-block;
 }
 
+.eth-link {
+    color: #007bff !important;
+    text-decoration: underline;
+    white-space: nowrap;
+    width: 400px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .expanded-details {
   text-align: center;
   background-color: rgba(0, 0, 0, 0.075);
@@ -125,7 +134,7 @@ tr {
 .status-step-icon {
     transform: scale(0.7);
     position: relative;
-    left: -2rem;
+    left: -1.5rem;
 }
 
 .container {
