@@ -1,4 +1,4 @@
-export function wrapContracts(contracts) {
+export function wrapContracts(contracts, web3ContractObjects) {
   // receives a list of web3 contracts and returs a list of objects with the 
   // rights keys.
   let newContracts = [];
@@ -12,8 +12,19 @@ export function wrapContracts(contracts) {
         "deposited": contracts[key][4],
         "shipped": contracts[key][5],
         "delivered": contracts[key][6],
+        "object": web3ContractObjects[key],
       }
     );
   }
   return newContracts;
+};
+
+export function getDeliveredText(enumValue) {
+  if (enumValue === 0) {
+    return "In Progress";
+  }
+  if (enumValue === 1) {
+    return "Success";
+  }
+  return "Failure";
 };

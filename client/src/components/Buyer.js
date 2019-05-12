@@ -6,72 +6,95 @@ import {
   MDBCardHeader,
   MDBContainer,
 } from "mdbreact";
-import active from '../dist/images/active.png'
-import failed from '../dist/images/failed.png'
-import passing from '../dist/images/passing.png'
-import pend from '../dist/images/pend.png'
-import pending from '../dist/images/pending.png'
-import success from '../dist/images/success.png'
+import withContract from "../utils/withContract";
+import ContractFactory from "../contracts/ContractFactory.json";
+import ProductContract from "../contracts/ProductContract.json";
+import active from '../dist/images/active.png';
+import failed from '../dist/images/failed.png';
+import passing from '../dist/images/passing.png';
+import pend from '../dist/images/pend.png';
+import success from '../dist/images/success.png';
+import { wrapContracts } from '../utils/shared';
 
 class Buyer extends Component {
-  state = {
+  constructor(props) {
+    super(props);
+    this.state = {
+      contractName: "",
+      buyerAddress: "",
+      contracts: {},
+    };
+
+    this.handleContractNameChange = this.handleContractNameChange.bind(this);
+    this.handleBuyerAddressChange = this.handleBuyerAddressChange.bind(this);
+    //this.handleCreateContract = this.handleCreateContract.bind(this);
+  }
+
+  handleContractNameChange(e) {
+    this.setState({ contractName: e.target.value });
   };
 
+  handleBuyerAddressChange(e) {
+    this.setState({ buyerAddress: e.target.value });
+  };
+
+  async componentDidUpdate(prevProps) {
+    if (this.props.factory !== prevProps.factory) {
+      try {
+        const contracts = await this.props.factory.methods.getBuyerContracts(this.props.accounts[0]).call();
+        const results = await Promise.all(
+          Array.from(Array(contracts.length).keys()).reverse().map(index => {
+            const contract = new this.props.web3.eth.Contract(
+              ProductContract.abi,
+              contracts[index],
+            );
+            return contract.methods.getDetails().call();
+          })
+        );
+        //wcontracts = wrapContracts(results);
+
+        this.setState({ contracts: wrapContracts(results) });
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  }
+
   render() {
+    let contractRows = [];
+    for (let key in this.state.contracts) {
+      contractRows.push(
+        <tr>
+          <th scope="row">
+            <input className="form-check-input" type="checkbox" id="checkbox1" />
+            <label className="form-check-label" for="checkbox1" className="label-table"></label>
+          </th>
+          <td>{this.state.contracts[key]["name"]}</td>
+          <td>{this.state.contracts[key]["amount"]}</td>
+          <td>{this.state.contracts[key]["deposited"]}</td>
+          <td>
+            <img className="status-step-icon" src={pend}></img>
+          </td>
+        </tr>)
+    };
+
     return (
       <MDBContainer fluid>
         <MDBCardHeader className="mx-auto float-none z-depth-1 w-75 p-3 py-2 px-2" tag="h4">Buyer</MDBCardHeader>
-        <MDBCard className="mb-5 mx-auto float-none white z-depth-1 w-75 p-3">
-          <div className="card-body">
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">@</span>
-              </div>
-              <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"/>
-            </div>
-              <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="Address"/>
-              <input type="email" id="defaultLoginFormEmail" class="w-50 form-control mb-4" placeholder="City"/>
-              <div class="input-group mb-3 w-50">
-              <select class="browser-default custom-select">
-                <option selected>State</option>
-                <option value="1">Virginia</option>
-                <option value="2">New York</option>
-                <option value="3">Pennsylvania</option>
-                <option value="3">California</option>
-                <option value="3">Texas</option>
-                <option value="3">Alaska</option>
-                <option value="3">Florida</option>
-                <option value="3">Oregon</option>
-                <option value="3">Nevada</option>
-                <option value="3">Oklahoma</option>
-              </select>
-              </div>
-              <div class="input-group mb-3">  
-              <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="Zip"/>
-              </div>
-            <MDBBtn className="px-2" block color="danger">
-              Create New Contract
-            </MDBBtn>
-          </div>
-        </MDBCard>
-        <div class="card card-cascade narrower w-75 mx-auto float-none">
-
+        <div className="card card-cascade narrower w-75 mx-auto float-none">
           <div
-            class="view view-cascade gradient-card-header blue-gradient narrower d-flex justify-content-between align-items-center">
-
+            className="view view-cascade gradient-card-header blue-gradient narrower d-flex justify-content-between align-items-center">
             <div>
-              <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2">
+              {/* <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2">
                 <i class="fas fa-th-large mt-0"></i>
               </button>
               <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2">
                 <i class="fas fa-columns mt-0"></i>
-              </button>
+              </button> */}
             </div>
-
-            <a href="" class="white-text mx-3">Table name</a>
-
+            <a href="" className="white-text mx-3">Contracts on Escrow</a>
             <div>
-              <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2">
+              {/* <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2">
                 <i class="fas fa-pencil-alt mt-0"></i>
               </button>
               <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2">
@@ -79,82 +102,78 @@ class Buyer extends Component {
               </button>
               <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2">
                 <i class="fas fa-info-circle mt-0"></i>
-              </button>
+              </button> */}
             </div>
 
           </div>
 
-          <div class="px-4">
+          <div className="px-4">
 
-            <div class="table-wrapper table-responsive">
-              <table class="table table-sm table-hover mb-0">
+            <div className="table-wrapper table-responsive">
+              <table className="table table-sm table-hover mb-0">
                 <thead>
                   <tr>
                     <th>
-                      <input class="form-check-input" type="checkbox" id="checkbox" />
-                      <label class="form-check-label" for="checkbox" class="mr-2 label-table"></label>
+                      <input className="form-check-input" type="checkbox" id="checkbox" />
+                      <label className="form-check-label" for="checkbox" className="mr-2 label-table"></label>
                     </th>
-                    <th class="th-lg">
-                      <a>Name
-                        <i class="fas fa-sort ml-1"></i>
+                    <th className="th-lg">
+                      <a>  Name
+                        <i className="fas fa-sort ml-1"></i>
                       </a>
                     </th>
-                    <th class="th-lg">
-                      <a href="">Amount
-                        <i class="fas fa-sort ml-1"></i>
+                    <th className="th-lg">
+                      <a href=""> Amount
+                        <i className="fas fa-sort ml-1"></i>
                       </a>
                     </th>
-                    <th class="th-lg">
-                      <a href="">Address
-                        <i class="fas fa-sort ml-1"></i>
+                    <th className="th-lg">
+                      <a href=""> Deposited
+                        <i className="fas fa-sort ml-1"></i>
                       </a>
                     </th>
-                    <th class="th-lg">
-                      <a href="">Status
-                        <i class="fas fa-sort ml-1"></i>
+                    <th className="th-lg">
+                      <a href=""> Status
+                        <i className="fas fa-sort ml-1"></i>
                       </a>
                     </th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  {contractRows}
+                  {/* <tr>
                     <th scope="row">
-                      <input class="form-check-input" type="checkbox" id="checkbox1" />
-                      <label class="form-check-label" for="checkbox1" class="label-table"></label>
+                      <input className="form-check-input" type="checkbox" id="checkbox1" />
+                      <label className="form-check-label" for="checkbox1" className="label-table"></label>
                     </th>
                     <td>Mark</td>
                     <td>@mdo</td>
                     <td>Mark</td>
                     <td>
-                      <img class="status-step-icon" src={pend}></img>
+                      <img className="status-step-icon" src={pend}></img>
                     </td>
                   </tr>
-                  
-                  <tr>
-                    {/* <div> */}
-                      {/* <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample"
-                        aria-expanded="false" aria-controls="collapseExample">
-                        Button with data-target
-                      </button> */}
-                      <th scope="row" data-toggle="collapse" data-target="#collapseExample"
-                        aria-expanded="false" aria-controls="collapseExample">
-                        <input class="form-check-input" type="checkbox" id="checkbox2"/>
-                        <label class="form-check-label" for="checkbox2" class="label-table"></label>
-                      </th>
-                      <td>Jacob</td>
-                      <td>@fat</td>
-                      <td>Jacob</td>
-                      <td><img class="status-step-icon" src={active}></img></td>
-                    {/* </div> */}
 
-                    <div class="collapse" id="collapseExample">
-                      
+                  <tr>
+                    <th scope="row" data-toggle="collapse" data-target="#collapseExample"
+                      aria-expanded="false" aria-controls="collapseExample">
+                      <input className="form-check-input" type="checkbox" id="checkbox2" />
+                      <label className="form-check-label" for="checkbox2" className="label-table"></label>
+                    </th>
+                    <td>Jacob</td>
+                    <td>@fat</td>
+                    <td>Jacob</td>
+                    <td><img className="status-step-icon" src={active}></img></td>
+                    
+
+                    <div className="collapse" id="collapseExample">
+
                     </div>
                   </tr>
                   <tr>
                     <th scope="row">
-                      <input class="form-check-input" type="checkbox" id="checkbox3"/>
-                      <label class="form-check-label" for="checkbox3" class="label-table"></label>
+                      <input className="form-check-input" type="checkbox" id="checkbox3" />
+                      <label className="form-check-label" for="checkbox3" className="label-table"></label>
                     </th>
                     <td>Larry</td>
                     <td>@twitter</td>
@@ -163,24 +182,24 @@ class Buyer extends Component {
                   </tr>
                   <tr>
                     <th scope="row">
-                      <input class="form-check-input" type="checkbox" id="checkbox4"/>
-                      <label class="form-check-label" for="checkbox4" class="label-table"></label>
+                      <input className="form-check-input" type="checkbox" id="checkbox4" />
+                      <label className="form-check-label" for="checkbox4" className="label-table"></label>
                     </th>
                     <td>Paul</td>
                     <td>@P_Topolski</td>
                     <td>Paul</td>
-                    <td><img class="status-step-icon" src={passing}></img></td>
+                    <td><img className="status-step-icon" src={passing}></img></td>
                   </tr>
                   <tr>
                     <th scope="row">
-                      <input class="form-check-input" type="checkbox" id="checkbox5"/>
-                      <label class="form-check-label" for="checkbox5" class="label-table"></label>
+                      <input className="form-check-input" type="checkbox" id="checkbox5" />
+                      <label className="form-check-label" for="checkbox5" className="label-table"></label>
                     </th>
                     <td>Larry</td>
                     <td>@twitter</td>
                     <td>Larry</td>
-                    <td><img class="status-step-icon" src={success}></img></td>
-                  </tr>
+                    <td><img className="status-step-icon" src={success}></img></td>
+                  </tr> */}
                 </tbody>
               </table>
             </div>
@@ -194,5 +213,4 @@ class Buyer extends Component {
 }
 
 
-
-export default withWeb3(Buyer);
+export default withWeb3(withContract(ContractFactory, 'factory')(Buyer));
