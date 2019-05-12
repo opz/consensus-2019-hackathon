@@ -64,7 +64,7 @@ contract ProductContract {
         shipped = _shipped;
     }
 
-    function withdrawToSeller() public onlySeller {
+    function withdrawToSeller() external onlySeller {
         require(shipped == true);
         require(delivered == DeliveryStatus.Delivered);
         require(depoOf() >= amount);
@@ -72,7 +72,7 @@ contract ProductContract {
         _escrow.beneficiaryWithdraw();
     }
 
-    function withdrawToBuyer() public onlyBuyer {
+    function withdrawToBuyer() external onlyBuyer {
         require(shipped == true);
         require(delivered == DeliveryStatus.Failed);
         _escrow.withdraw(buyer);
