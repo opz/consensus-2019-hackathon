@@ -20,10 +20,12 @@ class Buyer extends Component {
       //reveal
       el.currentTarget.nextSibling.classList.remove('hidden-details');
       el.currentTarget.classList.remove('collapsed');
+      el.currentTarget.classList.add('grey-background');
     } else {
       //hide
       el.currentTarget.classList.add('collapsed');
       el.currentTarget.nextSibling.classList.add('hidden-details');
+      el.currentTarget.classList.remove('grey-background');
     }
   };
 
@@ -96,16 +98,12 @@ class Buyer extends Component {
                   <input type="checkbox" className="custom-control-input" id="customSwitches"/>
                   <label className="custom-control-label" for="customSwitches">Shipment</label>
                 </div>
-                <button className="btn  dropdown-toggle mr-4 blue-background-button" type="button" data-toggle="dropdown"
-                  aria-haspopup="true" aria-expanded="false">Delivery</button>
-
-                <div className="dropdown-menu">
-                  <a className="dropdown-item" href="#">Success</a>
-                  <a className="dropdown-item" href="#">In Progress...</a>
-                  <a className="dropdown-item" href="#">Failed</a>
-                  <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="#">Separated link</a>
-                </div>
+                <select class="browser-default custom-select">
+                  <option selected>Delivery</option>
+                  <option value="1">Success</option>
+                  <option value="2">In Progress...</option>
+                  <option value="3">Failure</option>
+                </select>
                </td>
                </tr>
                   
@@ -121,19 +119,15 @@ class Buyer extends Component {
               <button type="button" className="btn  blue-background-button">Withdraw</button>
                 <button type="button" className="btn  blue-background-button">Send</button>
                 <div className="custom-control custom-switch">
-                  <input type="checkbox" className="custom-control-input" id="customSwitches"/>
-                  <label className="custom-control-label" for="customSwitches">Shipment</label>
+                  <input type="checkbox" className="custom-control-input" id="customSwitches2"/>
+                  <label className="custom-control-label" for="customSwitches2">Shipment</label>
                 </div>
-                <button className="btn  dropdown-toggle mr-4 blue-background-button" type="button" data-toggle="dropdown"
-                  aria-haspopup="true" aria-expanded="false">Delivery</button>
-
-                <div className="dropdown-menu">
-                  <a className="dropdown-item" href="#">Success</a>
-                  <a className="dropdown-item" href="#">In Progress...</a>
-                  <a className="dropdown-item" href="#">Failed</a>
-                  <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="#">Separated link</a>
-                </div>
+                <select class="browser-default custom-select">
+                  <option selected>Delivery</option>
+                  <option value="1">Success</option>
+                  <option value="2">In Progress...</option>
+                  <option value="3">Failure</option>
+                </select>
                </td>
                </tr>
                   <tr onClick={(e) => this.expandRow(e)} className="collapsed">
@@ -149,19 +143,15 @@ class Buyer extends Component {
               <button type="button" className="btn  blue-background-button">Withdraw</button>
                 <button type="button" className="btn  blue-background-button">Send</button>
                 <div className="custom-control custom-switch">
-                  <input type="checkbox" className="custom-control-input" id="customSwitches"/>
-                  <label className="custom-control-label" for="customSwitches">Shipment</label>
+                  <input type="checkbox" className="custom-control-input" id="customSwitches3"/>
+                  <label className="custom-control-label" for="customSwitches3">Shipment</label>
                 </div>
-                <button className="btn  dropdown-toggle mr-4 blue-background-button" type="button" data-toggle="dropdown"
-                  aria-haspopup="true" aria-expanded="false">Delivery</button>
-
-                <div className="dropdown-menu">
-                  <a className="dropdown-item" href="#">Success</a>
-                  <a className="dropdown-item" href="#">In Progress...</a>
-                  <a className="dropdown-item" href="#">Failed</a>
-                  <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="#">Separated link</a>
-                </div>
+                <select class="browser-default custom-select">
+                  <option selected>Delivery</option>
+                  <option value="1">Success</option>
+                  <option value="2">In Progress...</option>
+                  <option value="3">Failure</option>
+                </select>
                </td>
                </tr>
                   <tr onClick={(e) => this.expandRow(e)} className="collapsed">
@@ -176,19 +166,15 @@ class Buyer extends Component {
               <button type="button" className="btn  blue-background-button">Withdraw</button>
                 <button type="button" className="btn  blue-background-button">Send</button>
                 <div className="custom-control custom-switch">
-                  <input type="checkbox" className="custom-control-input" id="customSwitches"/>
-                  <label className="custom-control-label" for="customSwitches">Shipment</label>
+                  <input type="checkbox" className="custom-control-input" id="customSwitches4"/>
+                  <label className="custom-control-label" for="customSwitches4">Shipment</label>
                 </div>
-                <button className="btn  dropdown-toggle mr-4 blue-background-button" type="button" data-toggle="dropdown"
-                  aria-haspopup="true" aria-expanded="false">Delivery</button>
-
-                <div className="dropdown-menu">
-                  <a className="dropdown-item" href="#">Success</a>
-                  <a className="dropdown-item" href="#">In Progress...</a>
-                  <a className="dropdown-item" href="#">Failed</a>
-                  <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="#">Separated link</a>
-                </div>
+                <select class="browser-default custom-select">
+                  <option selected>Delivery</option>
+                  <option value="1">Success</option>
+                  <option value="2">In Progress...</option>
+                  <option value="3">Failure</option>
+                </select>
                </td>
                </tr>
                   <tr onClick={(e) => this.expandRow(e)} className="collapsed">
@@ -203,8 +189,8 @@ class Buyer extends Component {
               <button type="button" className="btn blue-background-button">Withdraw</button>
                 <button type="button" className="btn blue-background-button">Send</button>
                 <div className="custom-control custom-switch">
-                  <input type="checkbox" className="custom-control-input" id="customSwitches"/>
-                  <label className="custom-control-label" for="customSwitches">Shipment</label>
+                  <input type="checkbox" className="custom-control-input" id="customSwitches5"/>
+                  <label className="custom-control-label" for="customSwitches5">Shipment</label>
                 </div>
                 <select class="browser-default custom-select">
                   <option selected>Delivery</option>

@@ -57,8 +57,14 @@ tr {
     display: none;
 }
 
+.grey-background {
+    background-color: rgba(0, 0, 0, 0.075);
+}
+
 .expanded-details {
   text-align: center;
+  background-color: rgba(0, 0, 0, 0.075);
+
 }
 
 .expanded-details > td , .expanded-details > th{
