@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import withWeb3 from "../utils/withWeb3";
 import withContract from "../utils/withContract"
+import ContractFactory from "../contracts/ContractFactory.json"
+import ProductContract from "../contracts/ProductContract.json"
 import {
   Card,
   CardBody,
@@ -10,7 +12,6 @@ import {
   MDBCardHeader,
   MDBEdgeHeader,
   MDBFreeBird,
-  MDBIcon,
   MDBContainer,
   MDBCol,
   MDBInput,
@@ -21,10 +22,6 @@ import {
   TableHead,
 } from "mdbreact";
 
-import ContractFactory from "../contracts/ContractFactory.json"
-
-// create contract. returns a promise.
-//this.props.factory.methods.createContract().send();
 
 class Seller extends Component {
   constructor(props) {
@@ -49,7 +46,7 @@ class Seller extends Component {
   };
 
   handleCreateContract(e) {
-    e.preventDefault();
+    e.preventDefault(this.props.accounts);
     try {
       this.props.factory.methods.createContract(
         this.state.contractName,
@@ -62,6 +59,31 @@ class Seller extends Component {
     }
   }
 
+  async componentDidUpdate(prevProps) {
+    if (this.props.factory !== prevProps.factory) {
+      try {
+        const contracts = await this.props.factory.methods.getSellerContracts(this.props.accounts[0]).call();
+        console.log(contracts);
+        const results = await Promise.all(
+          Array.from(Array(contracts.length).keys()).reverse().map(index => {
+              //create a contract instance from address
+              console.log("before");
+              const contract = new this.props.web3.eth.Contract(
+                ProductContract.abi,
+                contracts[index],
+              );
+              console.log("after");
+              return contract.methods.getDetails().call();
+            })
+        );
+        console.log(results);
+        this.setState({ contracts: results });
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  }
+
   render() {
     let contractRows = [];
     let index = 0;
@@ -69,7 +91,7 @@ class Seller extends Component {
       contractRows.push(
         {
           id: index += 1,
-          heading0: key,
+          heading0: this.state.contracts[key],
         })
     };
 
@@ -88,7 +110,6 @@ class Seller extends Component {
 
     return (
       <MDBContainer fluid>
-        <MDBEdgeHeader color="indigo darken-3" />
         <MDBFreeBird>
         <MDBRow>
             <MDBCol className="mx-auto float-none ">
