@@ -73,8 +73,8 @@ class App extends Component {
                   <h1 className="hero-title mt-0">Landing template for startups</h1>
                   <p className="hero-paragraph">Our landing page template works on all devices, so you only have to set it up once, and get beautiful results forever.</p>
                   <div className="hero-cta">
-                    <a className="button button-primary" href="/seller">Pre order now</a>
-                    <a className="button" href="/buyer">Get in touch</a>
+                    <a className="button button-primary" href="/seller"> Sellers </a>
+                    <a className="button" href="/buyer"> Buyers </a>
                   </div>
                 </div>
                 <div className="hero-figure anime-element">
