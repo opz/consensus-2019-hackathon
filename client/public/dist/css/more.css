@@ -43,6 +43,15 @@
     z-index: -1;
 }
 
+/* .card-body:nth-of-type(2) {
+    padding: 0 !important;
+} */
+
+
+.card-body ~ .card-body {
+    padding: 0 !important;
+}
+
 #create-new-contract {
     background-color: #0270d7 !important;
 }
