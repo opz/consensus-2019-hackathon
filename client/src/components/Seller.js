@@ -69,13 +69,17 @@ class Seller extends Component {
     });
   };
 
-  handleAmountChange(e, contract) {
+  handleAmountChange(e, key, contracts) {
     if (e.key === 'Enter') {
-      const weiNumber = web3.utils.toWei(e.target.value, "ether");
-      contract.methods.setAmount(weiNumber).send({
+      const weiNumber = this.props.web3.utils.toWei(e.target.value, "ether");
+      contracts[key]["object"].methods.setAmount(weiNumber).send({
         "from": this.props.accounts[0],
       });
+    } else {
+      contracts[key]["amount"] = e.target.value;
     }
+    console.log(contracts);
+    this.setState({ contracts: contracts });
   }
 
 

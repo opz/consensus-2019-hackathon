@@ -11,6 +11,7 @@ import {
 import { getDeliveredText } from '../utils/shared';
 
 class ContractList extends Component {
+
   render() {
     const columns = [
       {
@@ -58,7 +59,11 @@ class ContractList extends Component {
           heading0: this.props.contracts[key]["name"],
           //heading1: this.props.contracts[key]["amount"],
           heading1:
-            <MDBInput onKeyDown={(e) => this.props.handleAmountChange(e, this.props.contracts[key]["object"])}></MDBInput>,
+            <MDBInput 
+                onKeyDown={(e) => this.props.handleAmountChange(e, key, this.props.contracts)}
+                onChange={(e) => this.props.handleAmountChange(e, key, this.props.contracts)}
+                value={this.props.contracts[key]["amount"]}>
+            </MDBInput>,
           heading2: this.props.contracts[key]["deposited"],
           heading3: getDeliveredText(parseInt(this.props.contracts[key]["delivered"])),
           heading4:
